@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Configuration</h1>
+
+<p>
+  <strong>Global threshold:</strong>
+  <%= @shop_setting.global_threshold %>
+</p>
+
+<p>
+  <strong>Alert frequency:</strong>
+  <%= @shop_setting.alert_frequency %>
+</p>
+
+<h2>Emails</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Is Admin</th>
+      <th>Is Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <% @emails.each do |email|%>
+      <tr>
+        <td><%= email.email %></td>
+        <td><%= email.is_admin %></td>
+        <td><%= email.is_active %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'Edit', edit_shop_setting_path(@shop_setting) %> |
+<%= link_to 'Back', shop_settings_path %>

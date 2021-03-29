@@ -1,0 +1,51 @@
+<%= form_with(model: shop_setting, local: true) do |form| %>
+  <% if shop_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shop_setting.errors.count, "error") %> prohibited this shop_setting from being saved:</h2>
+
+      <ul>
+      <% shop_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :global_threshold %>
+    <%= form.number_field :global_threshold %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alert_frequency %>
+    <%= form.text_field :alert_frequency %>
+  </div>
+
+
+
+<h3>Emails</h3>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Email</th>
+        <th>Is Admin</th>
+        <th>Is Active</th>
+      </tr>
+    </thead>
+
+    <tbody class='emails'>
+      <%= form.fields_for :emails do |email| %>
+        <%= render 'email_fields', f: email %>
+      <% end %>
+    </tbody>
+
+  </table>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+    <%= link_to_add_association 'Add Email', form, :emails, class: 'btn btn-primary', data: { association_insertion_node: '.emails', association_insertion_method: :append } %>
+  </div>
+
+<% end %>

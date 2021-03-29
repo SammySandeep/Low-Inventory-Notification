@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Product</h1>
+
+<p>
+  <strong>Product Title:</strong>
+  <%= @variant.product.title %>
+</p>
+
+<p>
+  <strong>SKU:</strong>
+  <%= @variant.sku %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @variant.quantity %>
+</p>
+
+<p>
+  <strong>Threshold:</strong>
+  <%= @variant.threshold %>
+</p>
+
+<%= link_to 'Back', variants_path %>

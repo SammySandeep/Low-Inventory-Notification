@@ -16,7 +16,7 @@ gem 'cocoon'
 gem 'jquery-rails', '~> 4.3.5'
 gem 'will_paginate','3.1.7'
 gem 'will_paginate-bootstrap', '~> 1.0.0'
-
+gem 'bootstrap', '~> 4.0.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

@@ -1,1 +1,143 @@
-<%= link_to "Home", root_path %>|<%= link_to "Configuration", shop_settings_path%>|<%= link_to "Variants", variants_path%>|<%= link_to "Report", reports_index_path%>|<%= link_to "help", help_index_path%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        nav.navbar.topnav ul > li a.nav-link {
+          padding: 10px 20px;
+          color: #000;
+          margin: 10px 2px;
+          font-size: 14px;
+        }
+        section{padding-bottom:50px;}
+        a.navbar-brand.topnav {
+          height: auto;
+        }
+        .top-bar.navbar-default {
+          padding: 10px 0;
+        }
+        .top-bar.navbar-default ul.list-inline {
+          margin: 0;
+        }
+        .top-bar.navbar-default {
+          padding: 10px 0;
+          background: #2D2B75;
+          color: #fff;
+        }
+        .top-bar.navbar-default a {
+          color: #fff;
+        }
+        .top-bar.navbar-default a:hover {
+          background: none;
+          text-decoration: none;
+        }
+        a:hover {
+          background: none;
+          text-decoration: none;
+        }
+
+        nav.navbar.topnav {
+          margin: 0 !important;
+        }
+        nav.navbar.topnav + hr {
+          margin: 10px 0 0;
+        }
+        nav.navbar.topnav ul > li a.nav-link {
+          padding: 10px 20px;
+          color: #000;
+          margin: 10px 2px;
+        }
+        nav.navbar.topnav ul > li a.nav-link:hover {
+          background: #2B2B71;
+          
+        }
+        .navbar-toggle span.icon-bar {
+          background: #2B2B71;
+        } 
+        .navbar-nav>li>a:hover {
+          color: #fff;
+          background: #2B2B71;
+
+        }
+        .nav-item:hover{
+          background-color: #2d2b75;
+        }
+
+        
+         .list-inline1 li{
+            
+            display: inline-block;
+            
+        }
+
+
+        @media screen and (max-width: 480px) {
+            .list-inline1> li {
+              float: center;
+              margin-right: 40px; 
+              
+
+            }
+            
+            .top-bar.navbar-default {
+              padding: 0px 0px;
+        }
+            
+
+        }
+
+    </style>
+    </head>
+    <body>
+        <div class="top-bar navbar-default" oncontextmenu="return false;">
+            <div class="container" oncontextmenu="return false;">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-envelope-o" style="font-size:11px;"></i> <a href="mailto:abhisarika.das@kloctechnologies.com(opens in new tab)?Subject=low-inventory-notification-app" target="_top">apps@kloctechnologies.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                    
+                        <ul class="list-inline list-inline1">
+                            <li><a href="https://twitter.com/klocsutra" target="_blank"><i class="fa fa-twitter" style="font-size:17px;color:white"></i></a></li> &nbsp&nbsp
+                            <li><a href="https://www.facebook.com/newklocsutra" target="_blank"><i class="fa fa-facebook" style="font-size:17px;color:white"></i></a></li> &nbsp&nbsp
+                            <li><a href="https://www.instagram.com/klocsutra/" target="_blank"><i class="fa fa-instagram" style="font-size:17px;color:white"></i></a></li> &nbsp&nbsp
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar  topnav" role="navigation" oncontextmenu="return false;">
+            <div class="container topnav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand topnav" href=<%=root_path%>><img src="https://s3.ap-south-1.amazonaws.com/referral-image-logo/logo.png" alt="" /></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><%= link_to "Home",root_path %></li>
+                <li class="nav-item"><%= link_to 'Configuration', shop_settings_path %></li>
+                
+                <li class="nav-item"><%= link_to "Variants", variants_path %></li>
+                <li class="nav-item"><%= link_to "Report", reports_index_path %></li>
+                <li class="nav-item"><%= link_to "help", help_index_path %></li>
+                </ul>
+                
+                </div>
+            </div>
+        </nav><hr/>
+    </body>
+</html>
+
+
+

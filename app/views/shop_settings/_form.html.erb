@@ -1,8 +1,12 @@
-<%= form_with(model: shop_setting, local: true) do |form| %>
+<%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
+<%= stylesheet_link_tag "application", "form_style.css" ,:media => "all" %>
+<%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>
+
+<div class="container text-center" >
+<%= form_with(model: shop_setting, local: true, :html => {:id => "settingForm"},:class => "card_shadow") do |form| %>
   <% if shop_setting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(shop_setting.errors.count, "error") %> prohibited this shop_setting from being saved:</h2>
-
       <ul>
       <% shop_setting.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,24 +15,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :global_threshold %>
-    <%= form.number_field :global_threshold %>
-  </div>
+    <div class="form-group">
+        <label>Global Threshold:</label>
+        <%= form.number_field :global_threshold,:class => "form-control" %>
+    </div>
+    <div class="form-group">
+        <label>Alert Frequency:</label>
+        <%= form.number_field :alert_frequency, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <div class="text-center">
+        <div class="actions">
+          <%= form.submit "Update", :class => "btn submit_btn"%>
+        </div>
+        <br>
+      <div class="text-center">
+        <div class="actions">
+          <%= link_to 'Back', shop_settings_path, :class => "btn backbtn" %> 
+          <%= link_to 'Show', @shop_setting, :class => "btn showbtn" %> 
+        </div>
+      </div>
+      </div>
+<br>
+<br> 
 
-  <div class="field">
-    <%= form.label :alert_frequency %>
-    <%= form.text_field :alert_frequency %>
-  </div>
-
-
-
-<h3>Emails</h3>
-
-  <table class='table'>
+<h3><b>Edit Emails</b></h3>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th></th>
+      <th>Delete</th>
         <th>Email</th>
         <th>Is Admin</th>
         <th>Is Active</th>
@@ -44,8 +60,8 @@
   </table>
 
   <div class="form-actions">
-    <%= form.button :submit %>
-    <%= link_to_add_association 'Add Email', form, :emails, class: 'btn btn-primary', data: { association_insertion_node: '.emails', association_insertion_method: :append } %>
+    <%= form.button :Submit , :class => 'btn submit_btn' %>
+    <%= link_to_add_association 'Add Email', form, :emails, class: 'btn submit_btn', data: { association_insertion_node: '.emails', association_insertion_method: :append } %>
+  </div> 
   </div>
-
 <% end %>

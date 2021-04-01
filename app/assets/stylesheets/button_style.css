@@ -1,0 +1,49 @@
+.btn{
+    background-color: #2D2B75;
+    color: white;
+  }
+
+  .editbtn,.editbtn:hover,.editbtn:focus,.editbtn:active {
+    background-color: #2D2B75;
+    color: white;
+    float: right;
+  }
+  .backbtn,.backbtn:hover,.backbtn:focus,.backbtn:active{
+    background-color: #2D2B75;
+    color: white;
+    float: right;
+  }
+  .editbtn,.editbtn:hover,.editbtn:focus,.editbtn:active{
+    background-color: #2D2B75;
+    color: white;
+    float: right;
+  }
+  .edit_btn,.edit_btn:hover,.edit_btn:focus,.edit_btn:active{
+    background-color: #2D2B75;
+    color: white;
+    float: right;
+    margin-bottom: 10px;
+  }
+  .show_btn,.show_btn:hover,.show_btn:focus,.show_btn:active{
+    background-color: #2D2B75;
+    color: white;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .showbtn,.showbtn:hover,.showbtn:focus,.showbtn:active{
+    background-color: #2D2B75;
+    color: white;
+    float: right;
+    margin-right: 10px;
+  }
+  .submit_btn,.submit_btn:hover,.submit_btn:focus,.submit_btn:active{
+    color: #fff;
+    background: #2e2c75;
+    border-color: #2e2c75;
+}
+  .remove_email_btn, .remove_email_btn:hover, .remove_email_btn:focus, .remove_email_btn:active{
+    color: #fff;
+    background: #2e2c75;
+    border-color: #2e2c75;
+  }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_164019) do
+ActiveRecord::Schema.define(version: 2021_03_29_100704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_164019) do
   create_table "emails", force: :cascade do |t|
     t.text "email"
     t.boolean "is_admin", default: false
-    t.boolean "is_active", default: false
+    t.boolean "is_active", default: true
     t.integer "shop_setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_03_29_164019) do
     t.integer "global_threshold"
     t.integer "alert_frequency"
     t.integer "shop_id"
-    t.boolean "sync_complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_shop_settings_on_shop_id"
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_164019) do
   create_table "shops", force: :cascade do |t|
     t.string "shopify_domain", null: false
     t.string "shopify_token", null: false
+    t.boolean "sync_complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 2021_03_29_164019) do
     t.bigint "shopify_variant_id"
     t.integer "threshold"
     t.integer "product_id"
+    t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shop_id"
     t.index ["product_id"], name: "index_variants_on_product_id"
     t.index ["shop_id"], name: "index_variants_on_shop_id"
     t.index ["shopify_variant_id"], name: "index_variants_on_shopify_variant_id"

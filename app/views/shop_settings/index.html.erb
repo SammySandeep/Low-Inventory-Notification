@@ -6,9 +6,9 @@
     
     <%= link_to 'Edit', edit_shop_setting_path(@shop_setting),:class => "btn edit_btn" %>
     <%= link_to 'Show', @shop_setting,:class => "btn show_btn"  %>
-    <div class="container text-center">
+  <div class="container text-center">
     <h3><b><center>Configuration</center></b></h3>
-    </div>
+  </div>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -18,38 +18,38 @@
         </tr>
       </thead>
 
-    <tbody>
-      <%if @shop_setting.nil?%>
-        <%else%>
-          <tr>
-            <td><%= @shop_setting.global_threshold %></td>
-            <td><%= @shop_setting.alert_frequency %></td>
-          </tr>
-      <% end %>
-    </tbody>
-</table>
-</div>
+      <tbody>
+        <%if @shop_setting.nil?%>
+          <%else%>
+            <tr>
+              <td><%= @shop_setting.global_threshold %></td>
+              <td><%= @shop_setting.alert_frequency %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<br>
-<h3><b>Emails</b></h3>
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <td>Email</td>
-        <td>Is Admin</td>
-        <td>Is Active</td>
-      </tr>
-    </thead>
-  <tbody>
-    <% @emails.each do |email|%>
-      <tr>
-        <td><%= email.email %></td>
-        <td><%= email.is_admin %></td>
-        <td><%= email.is_active %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+  <br>
+  <h3><b>Emails</b></h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>Email</td>
+          <td>Is Admin</td>
+          <td>Is Active</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @emails.each do |email|%>
+          <tr>
+            <td><%= email.email %></td>
+            <td><%= email.is_admin %></td>
+            <td><%= email.is_active %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

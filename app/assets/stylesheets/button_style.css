@@ -13,6 +13,10 @@
     color: white;
     float: right;
   }
+  .back_btn,.back_btn:hover,.back_btn:focus,.back_btn:active{
+    background-color: #2D2B75;
+    color: white;
+  }
   .editbtn,.editbtn:hover,.editbtn:focus,.editbtn:active{
     background-color: #2D2B75;
     color: white;
@@ -41,7 +45,14 @@
     color: #fff;
     background: #2e2c75;
     border-color: #2e2c75;
-}
+  }
+  .add_email_btn,.add_email_btn:hover,.add_email_btn:focus,.add_email_btn:active{
+    color: #fff;
+    background: #2e2c75;
+    border-color: #2e2c75;
+    float: right;
+    margin-bottom: 10px;
+  }
   .remove_email_btn, .remove_email_btn:hover, .remove_email_btn:focus, .remove_email_btn:active{
     color: #fff;
     background: #2e2c75;

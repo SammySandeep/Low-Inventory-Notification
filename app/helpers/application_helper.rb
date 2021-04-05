@@ -5,6 +5,8 @@ module ApplicationHelper
     end
 
     def find_shop_by_shopify_domain(shopify_domain)
+        binding.pry
+
         Shop.find_by_shopify_domain(shopify_domain)
     end
 end

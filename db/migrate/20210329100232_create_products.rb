@@ -6,5 +6,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :shop_id
       t.timestamps
     end
+
+    add_index :products, :shopify_product_id
+    add_index :products, :shop_id
   end
 end

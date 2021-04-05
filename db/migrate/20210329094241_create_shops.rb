@@ -3,6 +3,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
     create_table :shops  do |t|
       t.string :shopify_domain, null: false
       t.string :shopify_token, null: false
+      t.boolean :sync_complete, default: false
       t.timestamps
     end
 

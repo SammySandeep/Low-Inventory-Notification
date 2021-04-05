@@ -15,7 +15,7 @@ class VariantsController < ApplicationController
 
   def export_csv
     shop = find_shop_by_shopify_domain(session['shopify.omniauth_params']['shop'])
-    ExportCsvJob.perform_later(shop, sql_statement(shop))
+    ExportCsvJob.perform_later(shop_id: shop.id)
     respond_to do |format|
       format.html { redirect_to variants_path, notice: 'CSV Generation is in Queue, will send an email once done please be patient' }
     end

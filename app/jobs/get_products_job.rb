@@ -1,7 +1,9 @@
 class GetProductsJob < ApplicationJob
+    
     queue_as :default
 
-    def perform(shop, next_page)
-        Sync::GetProducts.new(shop, next_page).execute
+    def perform shop_id:, current_page_url:
+        Sync::GetProductsService.new(shop_id: shop_id, current_page_url: current_page_url).execute if current_page_url.present?
     end
+
 end

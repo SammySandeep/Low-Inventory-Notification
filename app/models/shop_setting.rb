@@ -1,7 +1,11 @@
 class ShopSetting < ApplicationRecord
-    belongs_to :shop
+    
     has_many :emails, dependent: :destroy
+    
+    belongs_to :shop
+    
     accepts_nested_attributes_for :emails, allow_destroy: true, reject_if: proc { |att| att['email'].blank? }
+    
     validates :global_threshold, numericality: { only_integer: true }, presence: true
     validates :alert_frequency, numericality: { only_integer: true }, presence: true
     validate :check_alert_frequency

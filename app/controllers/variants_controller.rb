@@ -1,7 +1,7 @@
 class VariantsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_variant, except: [:index, :export_csv]
+  before_action :set_variant, except: [:index, :export_csv, :import_csv]
   
   def index
     @variants = find_shop_by_shopify_domain(session['shopify.omniauth_params']['shop']).variants.paginate(:page => params[:page], per_page: 50)
@@ -19,6 +19,9 @@ class VariantsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to variants_path, notice: 'CSV Generation is in Queue, will send an email once done please be patient' }
     end
+  end
+
+  def import_csv
   end
 
   def update

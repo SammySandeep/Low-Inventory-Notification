@@ -46,9 +46,4 @@ class VariantsController < ApplicationController
     params.require(:variant).permit(:threshold)
   end
 
-  def sql_statement shop
-    "SELECT variants.shopify_variant_id AS id, products.title AS title, variants.sku AS sku, variants.threshold AS threshold  FROM
-    products INNER JOIN variants ON variants.product_id=products.id WHERE products.shop_id = #{shop.id}"
-  end
-
 end

@@ -6,6 +6,7 @@ class ShopSettingsController < ApplicationController
 
   def index
     @shop_setting = find_shop_by_shopify_domain(session['shopify.omniauth_params']['shop']).shop_setting
+    @emails = @shop_setting.emails
   end
 
   def show

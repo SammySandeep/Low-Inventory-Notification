@@ -1,13 +1,14 @@
+<%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-
-
 <p>
   <strong>Do you want to bulk enter for threshold instead entering on by one? Please click below button to export below data to your shop merchant email:</strong><br>
   <%= link_to "Export", variants_export_csv_path %>
 </p>
-
+<div>
+<%= link_to "Import CSV", variants_import_csv_path, :class => "btn edit_btn" %>
+</div>
 
 <table>
   <thead>

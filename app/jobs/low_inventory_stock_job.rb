@@ -4,6 +4,5 @@ class LowInventoryStockJob < ApplicationJob
     def perform(shop_setting)
         LowInventoryStock.new(shop_setting).execute()
     end
-    
 
 end

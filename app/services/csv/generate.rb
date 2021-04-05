@@ -17,6 +17,7 @@ class Csv::Generate
 
         CSV.open(file, 'w', write_headers: true, headers: HEADERS) do |writer|
              data.each do |d| 
+                binding.pry
                 writer << [d["id"], d["title"], d["sku"], d["threshold"]] 
              end
         end

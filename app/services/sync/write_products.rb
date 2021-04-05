@@ -40,7 +40,7 @@ class Sync::WriteProducts
             Variant.create(
                 sku: variant["sku"],
                 product_id: prod.id,
-                quantity: variant["inventory_quantity"],
+                quantity: variant["inventory_quantity"].negative? ? 0 : variant["inventory_quantity"],
                 shopify_variant_id: variant["id"],
                 threshold: 0,
                 shop_id: self.shop.id

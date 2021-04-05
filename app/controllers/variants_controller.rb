@@ -48,4 +48,5 @@ class VariantsController < ApplicationController
     products INNER JOIN variants ON variants.product_id=products.id WHERE products.shop_id = #{shop.id}"
   end
 
+  
 end

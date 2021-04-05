@@ -72,7 +72,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # # To understand why this was added, check https://github.com/rails/sprockets-rails/issues/376 
-  config.logger = Logger.new(STDOUT)
+  # config.logger = Logger.new(STDOUT)
   # logger           = ActiveSupport::Logger.new(STDOUT)
   # logger.formatter = config.log_formatter
   # config.logger = ActiveSupport::TaggedLogging.new(logger)

@@ -36,7 +36,7 @@ class Sync::WriteProductsService
         variants.each do |variant|
             Variant.create(
                 sku: variant["sku"],
-                quantity: variant["inventory_quantity"],
+                quantity: variant["inventory_quantity"].negative? ? 0 : variant["inventory_quantity"],
                 shopify_variant_id: variant["id"],
                 threshold: 0,
                 product_id: product_id,

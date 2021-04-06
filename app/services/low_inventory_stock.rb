@@ -8,7 +8,7 @@ class LowInventoryStock
 
     def execute
         products = get_low_stock_products()
-        ReportJob.perform_later(shop_setting.shop.shopify_domain, products)
+        GenerateReportJob.perform_later(shop_setting.shop, products)
     end
 
     private

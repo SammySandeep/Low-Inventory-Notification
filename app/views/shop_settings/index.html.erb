@@ -3,8 +3,10 @@
 
 <div class="container text-center" style="margin-bottom:20">
   <p id="notice" style="color:green;text-align:left;"><%= notice %></p>
-    
-    <%= link_to 'Edit', edit_shop_setting_path(@shop_setting),:class => "btn edit_btn" %>
+  <%if !@shop_setting.nil?%>
+    <%= link_to 'Edit Configuration', edit_shop_setting_path(@shop_setting), :class => "btn editbtn" %>
+  <%end%>
+
   <div class="container text-center">
     <h3><b><center>Configuration</center></b></h3>
   </div>
@@ -41,12 +43,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @emails.each do |email|%>
-          <tr>
-            <td><%= email.email %></td>
-            <td><%= email.is_admin %></td>
-            <td><%= email.is_active %></td>
-          </tr>
+        <%if @emails.nil?%>
+            <%else%>
+          <% @emails.each do |email|%>
+            <tr>
+              <td><%= email.email %></td>
+              <td><%= email.is_admin %></td>
+              <td><%= email.is_active %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

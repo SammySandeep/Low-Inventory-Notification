@@ -3,7 +3,6 @@
 <%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>
 
 <div class="container text-center">
- <h3><b> Editing Configuration </b></h3>
   <%= form_with(model: shop_setting, local: true, :html => {:id => "settingForm"},:class => "card_shadow") do |form| %>
     <% if shop_setting.errors.any? %>
       <div id="error_explanation">
@@ -22,36 +21,36 @@
     </div>
     <div class="form-group">
         <label>Alert Frequency:</label>
-        <%= form.number_field :alert_frequency, :class => "form-control" %>
+        <%= form.number_field :alert_frequency, :class => "form-control" , :min => "1"%>
     </div>
     <br>
   
- <%= link_to_add_association 'Add Email', form, :emails, class: 'btn add_email_btn', data: { association_insertion_node: '.emails', association_insertion_method: :append } %> 
- <h3><b><center>Edit Emails</center></b></h3>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Delete</th>
-          <th>Email</th>
-          <th>Is Admin</th>
-          <th>Is Active</th>
+    <%= link_to_add_association 'Add Email', form, :emails, class: 'btn add_email_btn', data: { association_insertion_node: '.emails', association_insertion_method: :append } %> 
+    <h3><b><center>Edit Emails</center></b></h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Delete</th>
+              <th>Email</th>
+              <th>Is Admin</th>
+              <th>Is Active</th>
+            </tr>
+          </thead>
+          <tbody class='emails'>
+            <%= form.fields_for :emails do |email| %>
+              <%= render 'email_fields', f: email %>
+            <% end %>
+        </tbody>
+        </table>
         </tr>
-      </thead>
-      <tbody class='emails'>
-        <%= form.fields_for :emails do |email| %>
-          <%= render 'email_fields', f: email %>
-        <% end %>
-     </tbody>
-    </table>
-    </tr>
-    <hr>
-  </div>
+        <hr>
+      </div>
    
 
     <div class="form-actions">
       <%= form.button :Submit , :class => 'btn submit_btn' %>
        <%= link_to 'Back', shop_settings_path, :class => "btn back_btn" %> 
     </div> 
-</div>
   <% end %>
+</div>

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'reports/download_report'
   get 'variants/export_csv'
   get 'variants/import_csv', to: 'variants#import_csv', as: 'variants_import_csv'
-
   resources :variants
   resources :shop_settings
 

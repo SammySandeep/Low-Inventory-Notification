@@ -17,6 +17,7 @@ gem 'jquery-rails', '~> 4.3.5'
 gem 'will_paginate','3.1.7'
 gem 'will_paginate-bootstrap', '~> 1.0.0'
 gem 'whenever', require: false
+gem 'aws-sdk-s3', '~> 1'
 
 
 # Use Puma as the app server

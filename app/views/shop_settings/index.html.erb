@@ -20,8 +20,7 @@
       </thead>
 
       <tbody>
-        <%if @shop_setting.nil?%>
-          <%else%>
+        <%if !@shop_setting.nil?%>
             <tr>
               <td><%= @shop_setting.global_threshold %></td>
               <td><%= @shop_setting.alert_frequency %></td>
@@ -43,8 +42,7 @@
         </tr>
       </thead>
       <tbody>
-        <%if @emails.nil?%>
-            <%else%>
+        <%if !@emails.nil?%>
           <% @emails.each do |email|%>
             <tr>
               <td><%= email.email %></td>

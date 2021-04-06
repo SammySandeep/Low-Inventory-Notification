@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
         Shop.find_by_shopify_domain(session['shopify.omniauth_params']['shop'])
     end
 
-    def check_shop_setting_created
+    def shop_setting_created?
         is_created = find_shop_id_in_shop_setting(current_shop.id)
         if !is_created
             redirect_to new_shop_setting_path

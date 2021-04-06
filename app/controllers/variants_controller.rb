@@ -1,6 +1,6 @@
 class VariantsController < ApplicationController
   before_action :set_variant, except: [:index, :export_csv, :import_csv]
-  before_action :check_shop_setting_created, only: [:index]
+  before_action :shop_setting_created?, only: [:index]
   
   def index
     if !current_shop.sync_complete

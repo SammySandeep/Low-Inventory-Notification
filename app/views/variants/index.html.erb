@@ -11,7 +11,7 @@
     <%= link_to "Import CSV", variants_import_csv_path, :class => "btn edit_btn" %>
   </div>
 
-  <table>
+  <table id = "table">
     <thead>
       <tr>
         <th>Product Title</th>
@@ -31,7 +31,6 @@
             <td><%= variant.sku %></td>
             <td><%= variant.quantity %></td>
             <td><%= variant.threshold %></td>
-            <td><%= link_to 'Show', variant %></td>
             <td><%= link_to 'Edit', edit_variant_path(variant) %></td>
           </tr>
         <% end %>

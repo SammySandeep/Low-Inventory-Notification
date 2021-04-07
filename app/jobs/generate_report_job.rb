@@ -1,23 +1,22 @@
 class GenerateReportJob < ApplicationJob
+    include ShopifyModule
+
     queue_as :default
 
     def perform(shop, products)
         target_obj = Csv::GenerateReport.new(shop, products).execute()
         Report.create_report(target_obj, shop)
-        admins = []
         recipients = [] 
 
         shop.shop_setting.emails.each do |email|
             if email.is_active?
-                if email.is_admin?
-                    admins << email.email
-                else
-                    recipients << email.email
-                end
+                recipients << email.email
             end
         end
 
-        SendReportMailer.notify(admins: admins, recipients: recipients, target_obj_key: target_obj.key).deliver_later
+        activate_session shop_id: shop.id
+        shop = ShopifyAPI::Shop.current
+        SendReportMailer.notify(admin: shop.email, recipients: recipients, target_obj_key: target_obj.key).deliver_later
     end
     
 end

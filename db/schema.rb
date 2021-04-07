@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_100704) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.text "url"
+    t.text "s3_key"
     t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

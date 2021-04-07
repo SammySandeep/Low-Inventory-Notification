@@ -1,10 +1,13 @@
 class VariantsController < ApplicationController
-  include ApplicationHelper
-
   before_action :set_variant, except: [:index, :export_csv, :import_csv]
+  before_action :shop_setting_created?, only: [:index]
   
   def index
-    @variants = find_shop_by_shopify_domain(session['shopify.omniauth_params']['shop']).variants.paginate(:page => params[:page], per_page: 50)
+    if !current_shop.sync_complete
+      flash.now[:notice] = "Products are still being synced to the application. We will notify you via email once it is completed."
+    else
+      @variants = current_shop.variants.paginate(:page => params[:page], per_page: 50)
+    end
   end
 
   def show
@@ -14,8 +17,7 @@ class VariantsController < ApplicationController
   end
 
   def export_csv
-    shop = find_shop_by_shopify_domain(session['shopify.omniauth_params']['shop'])
-    ExportCsvJob.perform_later(shop_id: shop.id)
+    ExportCsvJob.perform_later(shop_id: current_shop.id)
     respond_to do |format|
       format.html { redirect_to variants_path, notice: 'CSV Generation is in Queue, will send an email once done please be patient' }
     end

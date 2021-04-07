@@ -1,12 +1,14 @@
 class ShopSettingsController < ApplicationController
   layout 'application'
-  before_action :set_shop_setting, only: [:show, :edit, :update]
-
-  include ApplicationHelper
-
+  before_action :set_shop_setting, only: [:edit, :update]
+  
   def index
-    @shop_setting = find_shop_by_shopify_domain(session['shopify.omniauth_params']['shop']).shop_setting
+    @shop_setting = current_shop.shop_setting
     @emails = @shop_setting.emails
+  end
+  
+  def new
+    @shop_setting = ShopSetting.new
   end
 
   def show
@@ -15,6 +17,21 @@ class ShopSettingsController < ApplicationController
 
 
   def edit
+
+  end
+
+  def create
+    @shop_setting = ShopSetting.new(shop_setting_params)
+    @shop_setting.shop_id = current_shop.id
+    respond_to do |format|
+      if @shop_setting.save
+        format.html { redirect_to shop_settings_path, notice: 'Shop setting was successfully created.' }
+        format.json { render :show, status: :created, location: @shop_setting }
+      else
+        format.html { render :new }
+        format.json { render json: @shop_setting.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 

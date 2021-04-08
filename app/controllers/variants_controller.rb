@@ -1,5 +1,5 @@
 class VariantsController < ApplicationController
-  before_action :set_variant, except: [:index, :export_csv, :import_csv]
+  before_action :set_variant, except: [:index, :export_csv, :import_csv, :edit, :update]
   before_action :shop_setting_created?, only: [:index]
   
   def index
@@ -27,10 +27,11 @@ class VariantsController < ApplicationController
   end
 
   def update
+    binding.pry
     respond_to do |format|
       if @variant.update(variant_params)
         format.html { redirect_to @variant, notice: 'Variant was successfully updated.' }
-        format.json { render :index, status: :ok, location: @variant }
+        format.json { render :index, status: :ok, data: @variant }
       else
         format.html { render :edit }
         format.json { render json: @variant.errors, status: :unprocessable_entity }

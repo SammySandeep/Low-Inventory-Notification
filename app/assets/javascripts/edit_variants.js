@@ -1,21 +1,14 @@
-// var variant_edit = document.getElementById("variant_edit");
-// var edit_threshold = document.getElementById("edit_threshold");
-// var variant_edit = document.getElementById('variant_edit');
-// var td = document.getElementsByTagName('td');
-// for(var i=0;i<td.length;i++) {
-//     var edit_threshold = td[4];
-// }
-// variant_edit.onclick(function(){
-//     edit_threshold.type = 'text';
+var x = [];
+tds = document.getElementsByTagName('td');
+for(var i=3;i<tds.length;i=i+4){
+    x.push(tds[i]);
+}
 
-// });
-// var table = document.getElementById('table');
-// d = table.getElementsByTagName("tr")[1];
-// r = d.getElementsByTagName("td")[3];
-
-
-$('td').on('click', function() {
+for(var j=0;j<x.length;j++){
+x[j].onclick = function() {
     var $this = $(this);
+    var id = this.id;
+    // console.log(id);
     var $input = $('<input>', {
         value: $this.text(),
         type: 'text',
@@ -23,7 +16,23 @@ $('td').on('click', function() {
            $this.text(this.value);
         },
         keyup: function(e) {
-           if (e.which === 13) $input.blur();
+           if (e.which === 13){
+               var value = this.value;
+               console.log(value);
+               console.log(id);
+            Rails.ajax({
+                url: "/variants",
+                type: "PUT",
+                data: {id,value},
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(data) {}
+              })
+           }
+           $input.blur();
+           
         }
     }).appendTo( $this.empty() ).focus();
-});
+};
+}

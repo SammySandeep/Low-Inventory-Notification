@@ -1,0 +1,8 @@
+<% if @variant.errors.present? %>
+    <%# Display Error Toast Notification with the Error  %>
+<% else %>
+    $("#<%= @variant.id %>").replaceWith(function () {
+        return `<td class="variant-threshold-text" id=<%= @variant.id %> onclick="thresholdTdClicked(this);" ><%= @variant.threshold %></td>`;
+    });
+    <%# Display Success Toast Notification  %>
+<% end %>

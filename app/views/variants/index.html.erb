@@ -1,50 +1,43 @@
 <%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
-<%if @variants.nil?%>
-  <p id="notice"><%= notice %></p>
-<%else%>
-  <h1>Products</h1>
-  <p>
-    <strong>Do you want to bulk enter for threshold instead entering on by one? Please click below button to export below data to your shop merchant email:</strong><br>
-    <%= link_to "Export", variants_export_csv_path %>
-  </p>
-  <div>
-    <%= link_to "Import CSV", variants_import_csv_path, :class => "btn edit_btn" %>
-  </div>
+<%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>
 
-  <table id = "table">
-    <thead>
-      <tr>
-        <th>Product Title</th>
-        <th>SKU</th>
-        <th>Quantity</th>
-        <th>Threshold</th>
-        <%
-=begin%>
- <th>Show</th>
-        <th>Edit</th> 
-        <th colspan="3"></th> 
-<%
-=end%>
-      </tr>
-    </thead>
+<div class="container text-center" style="margin-bottom:20">
+  <%if @variants.nil?%>
+    <p id="notice"><%= notice %></p>
+  <%else%>
+    <div class="container text-center">
+      <h3><b><center>Products</center></b></h3>
+    </div>
 
-    <tbody>
-       <% @variants.each do |variant| %>
+    <%= link_to "Export", variants_export_csv_path, :class => "btn export-csv-btn" %>
+    <div>
+      <%= link_to "Import CSV", variants_import_csv_path, :class => "btn edit_btn" %>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-            <td><%= variant.product.title%></td>
-            <td><%= variant.sku %></td>
-            <td><%= variant.quantity %></td>
-            <td id=<%=variant.id%>><%= variant.threshold %></td>
-            <%
-=begin%>
- <td><%= link_to 'Edit', edit_variant_path(variant) %></td> 
-<%
-=end%>
+            <th>Product Title</th>
+            <th>SKU</th>
+            <th>Quantity</th>
+            <th>Threshold</th>
           </tr>
-        <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= will_paginate @variant %>
-<%end%>
-<%= javascript_include_tag 'edit_variants' %>
+        </thead>
+
+        <tbody>
+          <% @variants.each do |variant| %>
+            <tr>
+              <td><%= variant.product.title%></td>
+              <td><%= variant.sku %></td>
+              <td><%= variant.quantity %></td>
+              <td class="variant-threshold" onclick="changetd(this);" id=<%=variant.id%>><%= variant.threshold %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <%= will_paginate @variant %>
+  <%end%>
+</div>

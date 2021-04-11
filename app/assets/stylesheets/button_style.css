@@ -28,6 +28,12 @@
     float: right;
     margin-bottom: 10px;
   }
+  .export-csv-btn,.export-csv-btn:hover,.export-csv-btn:focus,.export-csv-btn:active{
+    background-color: #2D2B75;
+    color: white;
+    float: left;
+    margin-bottom: 10px;
+  }
   .show_btn,.show_btn:hover,.show_btn:focus,.show_btn:active{
     background-color: #2D2B75;
     color: white;

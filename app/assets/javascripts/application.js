@@ -18,4 +18,4 @@
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
-//= require 'edit_variants'
+//= require 'variants'

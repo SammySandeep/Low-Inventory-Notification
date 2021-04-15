@@ -7,7 +7,7 @@ class VariantsController < ApplicationController
     if !current_shop.sync_complete
       flash.now[:notice] = "Products are still being synced to the application. We will notify you via email once it is completed."
     else
-      @variants = current_shop.variants.paginate(:page => params[:page], per_page: 50)
+      @variants = current_shop.variants
     end
   end
 

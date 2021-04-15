@@ -1,8 +1,25 @@
 <% if @variant.errors.present? %>
-    <%# Display Error Toast Notification with the Error  %>
-<% else %>
+    var thresholdTd = document.getElementById(<%=@variant.id%>);
+    var editIconTd = $(thresholdTd).next();
+    var divElementforError = document.getElementById("snackbar-error");
+    divElementforError.className = "show";
+    setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     $("#<%= @variant.id %>").replaceWith(function () {
-        return `<td class="variant-threshold-text" id=<%= @variant.id %> onclick="thresholdTdClicked(this);" ><%= @variant.threshold %></td>`;
+        return `<td class="variant-threshold-text" id=<%= @variant.id %> onclick="updateIconPressed(this);" ><%= @variant.threshold %></td>`;
     });
-    <%# Display Success Toast Notification  %>
+    $(editIconTd).find('i').replaceWith(function () {
+        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>`;
+    });
+<% else %>
+    var divElementforsuccess = document.getElementById("snackbar-success");
+    divElementforsuccess.className = "show";
+    setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
+    var thresholdTd = document.getElementById(<%=@variant.id%>);
+    var editIconTd = $(thresholdTd).next();
+    $("#<%= @variant.id %>").replaceWith(function () {
+        return `<td class="variant-threshold-text" id=<%= @variant.id %> onclick="updateIconPressed(this);" ><%= @variant.threshold %></td>`;
+    });
+    $(editIconTd).find('i').replaceWith(function () {
+        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>`;
+    });
 <% end %>

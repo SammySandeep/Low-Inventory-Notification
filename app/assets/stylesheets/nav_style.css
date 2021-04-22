@@ -45,6 +45,20 @@
     padding: 30px;
     border-radius: 10px;
 }
+.card-body{
+    box-shadow: 10px 10px  #2D2B75;
+    height: 10rem;
+}
+.Campaign_Overview__Block .Campaign_Overview__Block__Number {
+    background: #2D2B75;
+    border-radius: 50%;
+    text-align: center;
+    height: 35px;
+    width: 35px;
+    padding-top: 6px;
+    color: #fff;
+    font-size: 18px;
+}
 
 /* media */
 @media screen and (max-width: 800px) and (min-width: 480px){

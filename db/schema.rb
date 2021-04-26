@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_100704) do
     t.string "sku"
     t.integer "quantity"
     t.bigint "shopify_variant_id"
-    t.integer "threshold"
+    t.integer "local_threshold"
     t.integer "product_id"
     t.integer "shop_id"
     t.datetime "created_at", null: false

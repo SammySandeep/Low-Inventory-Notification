@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" style="position:absolute;padding:25px 10px 10px 20px;" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" style="margin-left:75px;" id="myModalLabel">Add New Email</h4>
+</div>
+<form>
+  <input type="hidden" id="hiddenfieldelem" data-shopsettingid=<%=@shop_setting_id%>>
+  <div class="modal-body">
+  <label>Enter email Id:</label>
+    <input type="email" class="form-control" id="emailtext" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required>
+  <label>Is Active:</label>
+    <input type="checkbox" id="isactivechck" style='display:inline;margin-top:20px;margin-bottom:10px;border-color:#2D2B75;'/>
+  </div>
+  <div class="modal-footer">
+    <input type="submit" value="Save" class="btn editbtn" style="margin-right: 12rem;" onclick="saveclick();">
+  </div>
+</form>

@@ -15,6 +15,7 @@
   div.dataTables_wrapper div.dataTables_info {
     float: left;
   }
+
   #snackbar-success  {
     visibility: hidden;
     min-width: 250px;
@@ -56,6 +57,92 @@
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
+
+  #snackbar-success-email  {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:#008000;
+    color: #fff;
+    text-align: center; 
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  #snackbar-error-email  {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:	#FF0000;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #snackbar-success-email.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  #snackbar-error-email.show{
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+
+  #snackbar-success-email-delete  {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:#008000;
+    color: #fff;
+    text-align: center; 
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  #snackbar-error-email-delete  {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:	#FF0000;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #snackbar-success-email-delete.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  #snackbar-error-email-delete.show{
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
   @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;} 
     to {bottom: 30px; opacity: 1;}

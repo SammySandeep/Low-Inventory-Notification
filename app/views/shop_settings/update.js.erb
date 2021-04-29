@@ -1,0 +1,84 @@
+var globalthreshold = document.getElementById(<%=@shop_setting.id%>);
+var globalthresholdTd = $(globalthreshold).closest('td');
+var alertFrequency = document.getElementById(<%=(@shop_setting.shop_id)+5%>);
+var alertFrequencyTd = $(alertFrequency).closest('td');
+var table = document.getElementById('configuration-table');
+var editIconTdEle = table.rows[1].cells[2];
+
+<%if @email.present?%>
+    var updateiconElem = $('[data-email_id*= '+<%=@email_id%>+']');
+    var prevTdElem = $(updateiconElem).closest('td'); 
+    var updatedisactiveTd = $(prevTdElem).prev();
+    var hiddenfield = $(updatedisactiveTd).prev();
+    var updatedemailTd = $(hiddenfield).prev();
+<%end%>
+
+<% if @shop_setting.errors.present? %>
+
+    var divElementforError = document.getElementById("snackbar-error");
+    divElementforError.className = "show";
+    setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
+    
+    $(globalthresholdTd).replaceWith(function () {
+        return `<td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>`;
+    });
+
+    $(alertFrequencyTd).replaceWith(function () {
+        return ` <td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
+    });
+    
+    $(editIconTdEle).find('i').replaceWith(function () {
+        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>`;
+    });
+
+    <%if @email.present?%>
+
+        $(updateiconElem).replaceWith(function () {
+            return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
+        });
+
+        $(updatedisactiveTd).replaceWith(function () {
+            return `<td><%=@is_active %></td>`;
+        });
+     
+        $(updatedemailTd).replaceWith(function () {
+            return ` <td><%=@email%></td>`;
+        });
+
+    <%end%>
+
+<% else %>
+
+    var divElementforsuccess = document.getElementById("snackbar-success");
+    divElementforsuccess.className = "show";
+    setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
+    
+    $(globalthresholdTd).replaceWith(function () {
+        return `<td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>`;
+    });
+
+    $(alertFrequencyTd).replaceWith(function () {
+        return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
+    });
+    
+    $(editIconTdEle).find('i').replaceWith(function () {
+        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>`;
+    });
+
+    <%if @email.present?%>
+
+        $(updateiconElem).replaceWith(function () {
+            return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
+        });
+
+        $(updatedisactiveTd).replaceWith(function () {
+            return `<td><%=@is_active %></td>`;
+        });
+
+        $(updatedemailTd).replaceWith(function () {
+            return ` <td><%=@email%></td>`;
+        });
+
+    <% end %>
+    
+<% end %>

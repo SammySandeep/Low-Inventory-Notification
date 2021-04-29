@@ -1,7 +1,0 @@
-<%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
-  <tr class = "nested-fields">
-  <td><%= link_to_remove_association "Remove email", f, class: 'btn remove_email_btn' %></td>
-  <td><%= f.text_field :email, label: false %></td>
-  <td><%= f.check_box :is_admin, label: false %></td>
-  <td><%= f.check_box :is_active, label: false %></td>
-

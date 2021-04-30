@@ -8,7 +8,6 @@ class ProductsCreateWebhookJob < ApplicationJob
         end
     end
 
-
     private
 
     def create_product
@@ -30,8 +29,8 @@ class ProductsCreateWebhookJob < ApplicationJob
           sku: variant['sku'],
           shopify_variant_id: variant['id'],
           product_id: product_id,
-          quantity: variant['inventory_quantity']
-          threshold: nil
+          quantity: variant['inventory_quantity'],
+          threshold: nil,
           shop_id: @shop_id
         )
     end

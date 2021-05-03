@@ -12,9 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require jquery3
 //= require cocoon
+//= require jquery
+//= require turbolinks
 //= require_tree .
 //= require popper
-//= require bootstrap-sprockets
+//= require bootstrap
+//= require 'variants'
+//= require datatables
+
+document.addEventListener("turbolinks:load", function() {
+    $("#variants-datatable").dataTable();
+});

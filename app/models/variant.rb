@@ -5,7 +5,7 @@ class Variant < ApplicationRecord
     
     validates :quantity, numericality: { only_integer: true }, presence: true
     validates :shopify_variant_id, presence: true, uniqueness: true
-    validates :local_threshold, numericality: { only_integer: true }, allow_blank: true
+    validates :local_threshold, numericality: { only_integer: true }, presence: true, allow_nil: true
 
     def threshold
         if self.local_threshold.present?

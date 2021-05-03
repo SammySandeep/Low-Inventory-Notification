@@ -3,8 +3,14 @@ class ShopSettingsController < ApplicationController
   before_action :set_shop_setting, only: [:edit, :update]
   
   def index
-    @shop_setting = current_shop.shop_setting
-    @emails = @shop_setting.emails
+    if current_shop.shop_setting.present?
+      @shop_setting = current_shop.shop_setting
+      if !@shop_setting.emails.nil?
+        @emails = @shop_setting.emails
+      end
+    else
+      redirect_to new_shop_setting_path
+    end
   end
   
   def new
@@ -14,7 +20,6 @@ class ShopSettingsController < ApplicationController
   def show
     @emails = @shop_setting.emails
   end
-
 
   def edit
 
@@ -32,18 +37,17 @@ class ShopSettingsController < ApplicationController
         format.json { render json: @shop_setting.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def update
+    @shop_setting.update(shop_setting_params)
+    if shop_setting_params[:emails_attributes].present?
+      @email_id = shop_setting_params[:emails_attributes][:id]
+      @email = shop_setting_params[:emails_attributes][:email]
+      @is_active = shop_setting_params[:emails_attributes][:is_active]
+    end
     respond_to do |format|
-      if @shop_setting.update(shop_setting_params)
-        format.html { redirect_to shop_settings_path, notice: 'Shop setting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shop_setting }
-      else
-        format.html { render :edit }
-        format.json { render json: @shop_setting.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
@@ -54,7 +58,8 @@ class ShopSettingsController < ApplicationController
     end
 
     def shop_setting_params
-      params.require(:shop_setting).permit(:global_threshold, :alert_frequency, emails_attributes: Email.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:shop_setting).permit(:global_threshold, :alert_frequency, emails_attributes: Email.attribute_names.map(&:to_sym))
     end
+    
 end
 

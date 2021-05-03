@@ -13,13 +13,11 @@ gem 'httparty'
 gem 'sidekiq', '~>6.1.0'
 gem "shopify_app", "~> 15.0"
 gem 'cocoon'
-gem 'jquery-rails', '~> 4.3.5'
-gem 'will_paginate','3.1.7'
-gem 'will_paginate-bootstrap', '~> 1.0.0'
+gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'whenever', require: false
 gem 'aws-sdk-s3', '~> 1'
-
+gem 'jquery-datatables'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

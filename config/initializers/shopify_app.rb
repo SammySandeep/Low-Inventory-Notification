@@ -9,6 +9,11 @@ ShopifyApp.configure do |config|
   config.after_authenticate_job = false
   config.api_version = "2021-01"
   config.shop_session_repository = 'Shop'
+  config.webhooks = [
+    { topic: 'products/create', address: "#{ENV['URL']}/shopify/create", format: 'json' },
+    { topic: 'products/update', address: "#{ENV['URL']}/shopify/update", format: 'json' },
+    { topic: 'products/delete', address: "#{ENV['URL']}/shopify/delete", format: 'json' }
+  ]
   config.allow_jwt_authentication = true
 end
 

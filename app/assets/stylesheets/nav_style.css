@@ -46,11 +46,11 @@
     border-radius: 10px;
 }
 .card-body{
-    box-shadow: 10px 10px  #2D2B75;
+    box-shadow: 10px 10px 5px #2d2b75;
     height: 10rem;
 }
 .Campaign_Overview__Block .Campaign_Overview__Block__Number {
-    background: #2D2B75;
+    background: #008000;
     border-radius: 50%;
     text-align: center;
     height: 35px;

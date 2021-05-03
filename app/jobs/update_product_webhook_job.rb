@@ -1,50 +1,39 @@
 class UpdateProductWebhookJob < ApplicationJob
-    def perform(product_params)
-        @product = Product.find_by(shopify_product_id: product_params['id'])
-        @product.title = product_params['title']
-        @product.shopify_product_id = product_params['id']
-        @product.save
-        if product_params['variants'].any?
-            product_params['variants'].each do |variant|
-                variant_update = Variant.find_by(shopify_variant_id: variant['id'])
-                if variant_update.nil?
-                    variant = create_variant(variant, @product.id, @product.shop_id)
-                else
-                    variant_update.sku = variant['sku']
-                    variant_update.quantity = variant['inventory_quantity']
-                    variant_update.save
-                end  
-            end
-            check_variant_removed_in_shopify product_params
+    queue_as :default
+
+    def perform(shopify_product_params)
+        @shopify_product_params = shopify_product_params
+        @product = Product.find_by(shopify_product_id: @shopify_product_params['id'])
+        if !(@product.title == @shopify_product_params['title'])
+            @product.title = @shopify_product_params['title']
+            @product.save!
         end
+        shopify_variant_ids = @product.variants.pluck(:shopify_variant_id)
+        @shopify_product_params['variants'].each do |shopify_variant_params|
+            @variant = Variant.find_by(shopify_variant_id: shopify_variant_params['id'])
+            if @variant.nil?
+                @variant = create_variant(shopify_variant_params, @product.id, @product.shop_id)
+            else
+                @variant.sku = shopify_variant_params['sku']
+                @variant.quantity = shopify_variant_params['inventory_quantity']
+                @variant.save!
+            end  
+            shopify_variant_ids.delete(shopify_variant_params['id'])
+        end
+        Variant.where(shopify_variant_id: shopify_variant_ids).destroy_all if !shopify_variant_ids.empty?
     end
 
     private
 
-    def create_variant(variant, product_id, shop_id)
-        Variant.create(
-          sku: variant['sku'],
-          shopify_variant_id: variant['id'],
+    def create_variant(shopify_variant_params, product_id, shop_id)
+        Variant.create!(
+          sku: shopify_variant_params['sku'],
+          shopify_variant_id: shopify_variant_params['id'],
           product_id: product_id,
-          quantity: variant['inventory_quantity'],
+          quantity: shopify_variant_params['inventory_quantity'],
           threshold: nil,
           shop_id: shop_id
         )
-    end
-
-    def check_variant_removed_in_shopify product_params
-        @product.variants.each do |saved_variant|
-            variant_found = false
-            product_params['variants'].each do |new_variant|
-                if saved_variant.shopify_variant_id	== new_variant['id']
-                    variant_found = true
-                    break
-                end
-            end
-            if !variant_found
-                saved_variant.destroy
-            end
-        end
     end
     
 end

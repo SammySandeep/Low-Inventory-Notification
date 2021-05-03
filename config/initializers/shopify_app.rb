@@ -13,7 +13,7 @@ ShopifyApp.configure do |config|
     { topic: 'products/create', address: "#{ENV['URL']}/shopify/create", format: 'json' },
     { topic: 'products/update', address: "#{ENV['URL']}/shopify/update", format: 'json' },
     { topic: 'products/delete', address: "#{ENV['URL']}/shopify/delete", format: 'json' }
-    ]
+  ]
   config.allow_jwt_authentication = true
 end
 

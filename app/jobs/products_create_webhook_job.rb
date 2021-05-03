@@ -1,35 +1,35 @@
 class ProductsCreateWebhookJob < ApplicationJob
-    def perform(product_params, shop_id)
-        @product_params = product_params
+    queue_as :default
+    
+    def perform(shopify_product_params, shop_id)
+        @shopify_product_params = shopify_product_params
         @shop_id = shop_id
         product = create_product
-        if @product_params['variants'].any?
-            create_variants(product) 
-        end
+        create_variants(product) 
     end
 
     private
 
     def create_product
-        Product.create(
-            title: @product_params['title'],
-            shopify_product_id: @product_params['id'],
+        Product.create!(
+            title: @shopify_product_params['title'],
+            shopify_product_id: @shopify_product_params['id'],
             shop_id: @shop_id
         )
     end
 
     def create_variants(product)
-        @product_params['variants'].each do |variant|
-          variant = create_variant(variant, product.id)
+        @shopify_product_params['variants'].each do |shopify_variant_params|
+          variant = create_variant(shopify_variant_params, product.id)
         end
     end
 
-    def create_variant(variant, product_id)
-        Variant.create(
-          sku: variant['sku'],
-          shopify_variant_id: variant['id'],
+    def create_variant(shopify_variant_params, product_id)
+        Variant.create!(
+          sku: shopify_variant_params['sku'],
+          shopify_variant_id: shopify_variant_params['id'],
           product_id: product_id,
-          quantity: variant['inventory_quantity'],
+          quantity: shopify_variant_params['inventory_quantity'],
           threshold: nil,
           shop_id: @shop_id
         )

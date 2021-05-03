@@ -40,6 +40,7 @@ class Sync::WriteProductsService
                 quantity: variant["inventory_quantity"],
                 shopify_variant_id: variant["id"],
                 product_id: product_id,
+                local_threshold: nil,
                 shop_id: self.shop_id
             )
         end

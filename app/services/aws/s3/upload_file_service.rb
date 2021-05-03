@@ -1,7 +1,11 @@
-class Aws::S3::UploadCsv
+class Aws::S3::UploadFileService
+    
     attr_reader :file
 
-    def initialize(file)
+    AWS_BUCKET_NAME = ENV["AWS_BUCKET_NAME"]
+    AWS_BUCKET_REGION = ENV['AWS_BUCKET_REGION']
+
+    def initialize file: 
         @file = file
     end
 
@@ -20,5 +24,6 @@ class Aws::S3::UploadCsv
         targetObj.upload_file(self.file)
         return targetObj
     end
+
 
 end  

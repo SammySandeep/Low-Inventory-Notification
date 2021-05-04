@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_062349) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.text "url"
+    t.text "s3_key"
     t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_062349) do
     t.string "sku"
     t.integer "quantity"
     t.bigint "shopify_variant_id"
-    t.integer "threshold"
+    t.integer "local_threshold"
     t.integer "product_id"
     t.integer "shop_id"
     t.datetime "created_at", null: false

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   get 'help/index'
   get 'reports/index'
-  get 'reports/download_report'
+  get 'reports/download'
   get 'variants/export_csv'
   get 'variants/import_csv', to: 'variants#import_csv', as: 'variants_import_csv'
   put '/variants', to: 'variants#update'

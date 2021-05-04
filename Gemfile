@@ -15,6 +15,8 @@ gem "shopify_app", "~> 15.0"
 gem 'cocoon'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
+gem 'whenever', require: false
+gem 'aws-sdk-s3', '~> 1'
 gem 'jquery-datatables'
 
 # Use Puma as the app server

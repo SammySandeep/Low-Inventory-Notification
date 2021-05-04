@@ -4,7 +4,7 @@ class CreateVariants < ActiveRecord::Migration[5.2]
       t.string :sku
       t.integer :quantity
       t.bigint :shopify_variant_id
-      t.integer :threshold
+      t.integer :local_threshold
       t.integer :product_id
       t.integer :shop_id
       t.timestamps

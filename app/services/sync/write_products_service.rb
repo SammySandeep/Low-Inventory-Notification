@@ -19,27 +19,28 @@ class Sync::WriteProductsService
     private
 
     def create_products
-        time = Benchmark.measure {
+        # time = Benchmark.measure {
             self.products["products"].each do |product|
-                @product = Product.create(
+                @product = Product.create!(
                     title: product["title"],
                     shopify_product_id: product["id"],
                     shop_id: self.shop_id
                 )
                 create_variants(@product.id, product["variants"])
             end
-        }
-        Rails.logger.info "\n\nBENCHMARK TO WRITE PRODUCTS: #{time.real}\n\n"
+        # }
+        # Rails.logger.info "\n\nBENCHMARK TO WRITE PRODUCTS: #{time.real}\n\n"
     end
 
     def create_variants(product_id, variants)
         variants.each do |variant|
-            Variant.create(
+            # binding.pry
+            Variant.create!(
                 sku: variant["sku"],
                 quantity: variant["inventory_quantity"],
                 shopify_variant_id: variant["id"],
-                threshold: 0,
                 product_id: product_id,
+                local_threshold: nil,
                 shop_id: self.shop_id
             )
         end

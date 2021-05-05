@@ -35,7 +35,7 @@
                   <td><%= variant.product.title%></td>
                   <td><%= variant.sku %></td>
                   <td><%= variant.quantity %></td>
-                  <td id=<%=variant.id%>><%= Variant.threshold(variant) %></td>
+                  <td id=<%=variant.id%>><%= variant.threshold %></td>
                   <td> <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i></td>
                 </tr>
               <% end %>

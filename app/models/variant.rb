@@ -7,11 +7,11 @@ class Variant < ApplicationRecord
     validates :shopify_variant_id, presence: true, uniqueness: true
     validates :local_threshold, numericality: { only_integer: true }, presence: true, allow_nil: true
 
-    def self.threshold(variant)
-        if variant.local_threshold.present?
-            return variant.local_threshold
+    def threshold
+        if self.local_threshold.present?
+            self.local_threshold
         else
-            return variant.product.shop.shop_setting.global_threshold
+            self.product.shop.shop_setting.global_threshold
         end
     end
 

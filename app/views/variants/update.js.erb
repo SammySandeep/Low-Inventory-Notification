@@ -5,7 +5,7 @@
     divElementforError.className = "show";
     setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     $("#<%= @variant.id %>").replaceWith(function () {
-        return `<td class="variant-threshold-text" id=<%= @variant.id %> onclick="updateIconPressed(this);" ><%= Variant.threshold(@variant) %></td>`;
+        return `<td class="variant-threshold-text" id=<%= @variant.id %> onclick="updateIconPressed(this);" ><%= @variant.threshold %></td>`;
     });
     $(editIconTd).find('i').replaceWith(function () {
         return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>`;
@@ -17,7 +17,7 @@
     var thresholdTd = document.getElementById(<%=@variant.id%>);
     var editIconTd = $(thresholdTd).next();
     $("#<%= @variant.id %>").replaceWith(function () {
-        return `<td class="variant-threshold-text" id=<%= @variant.id %>"><%= Variant.threshold(@variant) %></td>`;
+        return `<td class="variant-threshold-text" id=<%= @variant.id %>"><%= @variant.threshold %></td>`;
     });
     $(editIconTd).find('i').replaceWith(function () {
         return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>`;

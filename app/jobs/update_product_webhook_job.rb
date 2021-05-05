@@ -31,7 +31,7 @@ class UpdateProductWebhookJob < ApplicationJob
           shopify_variant_id: shopify_variant_params['id'],
           product_id: product_id,
           quantity: shopify_variant_params['inventory_quantity'],
-          threshold: nil,
+          local_threshold: nil,
           shop_id: shop_id
         )
     end

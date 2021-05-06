@@ -12,6 +12,7 @@ class LowInventoryStockService
 
     private
 
+    # REFACTOR
     def low_inventory_products
         products = Array.new
 

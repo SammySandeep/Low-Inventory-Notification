@@ -18,6 +18,7 @@ class Sync::WriteProductsService
 
     private
 
+    # REFACTOR
     def create_products
         # time = Benchmark.measure {
             self.products["products"].each do |product|

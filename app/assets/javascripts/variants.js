@@ -21,6 +21,6 @@ function updateIconPressed(variantId) {
         type: "PUT",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: `variant[threshold]=${updatedThresholdValue}`
+        data: `variant[local_threshold]=${updatedThresholdValue}`
     }) 
 }

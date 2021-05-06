@@ -13,7 +13,7 @@ class ShopSetting < ApplicationRecord
     private
 
     def check_alert_frequency
-        unless [0,1,7,24].include? self.alert_frequency
+        unless [1,7,24].include? self.alert_frequency
             errors.add(:alert_frequency, "Must be specified frequency value")
         end
     end

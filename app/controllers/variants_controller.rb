@@ -41,7 +41,7 @@ class VariantsController < ApplicationController
   end
 
   def variant_params
-    params.require(:variant).permit(:threshold)
+    params.require(:variant).permit(:local_threshold)
   end
 
 end

@@ -8,28 +8,24 @@ class GenerateReportService
     end
 
     def execute
-        file = generate_csv_file()
-        target_obj = Aws::S3::UploadFileService.new(file: file).execute
-        File.delete("#{Rails.root}/#{file}")
-        return target_obj
+        DigitalOcean::Spaces::UploadFileService.new(file_name: file_name, file_contents: csv_string, path: "reports/#{shop_name}").execute
     end
 
     private
 
-
-    def generate_csv_file
+    # REFACTOR
+    def csv_string
         csv_headers = ["Variant ID", "Product Title", "SKU", "Threshold"]
-        # file = "#{self.shop.shopify_domain}-#{Time.now.to_s}.csv"
 
-        file = "#{Time.now.utc.to_formatted_s(:number)}_#{shop_name}.csv"
+        csv_string = CSV.generate(write_headers: true, headers: csv_headers) do |csv|
+            self.products.each { |csv_row| csv << csv_row }
+        end
 
-        CSV.open(file, "wb", write_headers: true, headers: csv_headers) do |csv|
-            self.products.each do |csv_row|
-                csv << csv_row
-            end
-        end 
+        return csv_string
+    end
 
-        return file
+    def file_name
+        "#{Time.now.utc.to_formatted_s(:number)}_#{shop_name}.csv"
     end
 
     def shop_name

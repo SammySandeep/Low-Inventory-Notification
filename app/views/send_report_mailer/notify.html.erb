@@ -1,3 +1,3 @@
 <p>Please click link below</p>
 
-<%=@url%>
+<%= "#{ENV["URL"]}/reports/download?report_id=#{@report_id}" %>

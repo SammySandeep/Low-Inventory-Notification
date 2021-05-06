@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class Shop < ActiveRecord::Base
+
   include ShopifyApp::ShopSessionStorage
+  include ShopifyModule
 
   has_many :products, dependent: :destroy
   has_many :variants, dependent: :destroy
@@ -12,6 +14,11 @@ class Shop < ActiveRecord::Base
 
   def api_version
     ShopifyApp.configuration.api_version
+  end
+
+  def admin_email
+    activate_session shop_id: self.id
+    return ShopifyAPI::Shop.current.email
   end
 
   private 

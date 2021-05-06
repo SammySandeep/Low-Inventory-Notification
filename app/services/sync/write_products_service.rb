@@ -10,9 +10,11 @@ class Sync::WriteProductsService
         @next_page_url = next_page_url
     end
 
-    def execute    
+    def execute
         create_products
-        GetProductsJob.perform_later(shop_id: self.shop_id, current_page_url: next_page_url)
+        if !next_page_url.nil?
+            GetProductsJob.perform_later(shop_id: self.shop_id, current_page_url: next_page_url)
+        end
         SyncProductsCompleteJob.perform_later(shop_id: self.shop_id) if !self.next_page_url.present?
     end
 

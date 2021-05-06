@@ -13,7 +13,7 @@ class Sync::GetProductsService
             next_page_url = get_next_page_url(response.headers["link"])
             WriteProductsJob.perform_later(shop_id: self.shop_id, products: response.to_h, next_page_url: next_page_url)
         else
-            WriteProductsJob.perform_later(shop_id: self.shop_id, products: response.to_h, next_page_url: current_page_url)
+            WriteProductsJob.perform_later(shop_id: self.shop_id, products: response.to_h, next_page_url: nil)
         end
     end
 

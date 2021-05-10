@@ -4,14 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 5.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'dotenv-rails'
 gem 'pry'
 gem 'httparty'
 gem 'sidekiq', '~>6.1.0'
-gem "shopify_app", "~> 15.0"
+gem "shopify_app", "~> 18.0"
 gem 'cocoon'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'

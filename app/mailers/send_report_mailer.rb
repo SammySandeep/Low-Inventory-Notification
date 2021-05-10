@@ -1,14 +1,14 @@
 class SendReportMailer < ApplicationMailer
 
-    def notify(admin:, recipients:, target_obj_key:)
-        @url =  "#{ENV['DOWNLOAD_LINK']}#{target_obj_key.gsub(" ","$")}"
-        
-        if recipients.empty?
-            mail to: "#{admin}", subject: "These items will be out of stock soon." 
-        else
-            mail to: "#{admin}", cc: recipients.join(","), subject: "These items will be out of stock soon."
-        end
+    def notify to:, cc:, report_id:
+        @report_id = report_id
+        mail(to: "#{to}", cc: cc, subject: subject)
+    end
 
+    private
+
+    def subject
+        "These items will be out of stock soon." 
     end
 
 end

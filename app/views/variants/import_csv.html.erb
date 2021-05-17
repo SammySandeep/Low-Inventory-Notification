@@ -3,16 +3,14 @@
     <div class="form-header">
         <h5>Import Products/Variants</h5>
     </div>
-    <%= form_with url:variants_import_csv_url, :html => {:id => "fileUploadForm"} do |form| %>  
-        <%= form_tag variants_import_csv_url, multipart: true do %> 
-            <div class="form-group"> 
-                <%= form.label :upload_CSV, :name => 'fileField'%>  
-                <%= form.file_field :file, :class => 'form-control-file'%>   
-            </div>
-            <div class="actions">  
-                <%= form.submit class: 'btn submit-btn'%>
-                <%= link_to 'Back', variants_path , :class => "btn back-btn" %>
-            </div>
-        <% end %>
+    <%= form_with url: "#{ENV["URL"]}/variants/update_csv_threshold", multipart: true, method: :post do |form| %>
+        <div class="form-group">
+            <%= form.label :upload_CSV, :name => 'fileField'%>
+            <%= form.file_field :file, :class => 'form-control-file', accept: '.csv' %>
+        </div>
+        <div class="actions">
+            <%= form.submit "Submit", class: 'btn submit-btn'%>
+            <%= link_to 'Back', variants_path , :class => "btn back-btn" %>
+        </div>
     <% end %>
 </div>

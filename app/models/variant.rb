@@ -15,4 +15,31 @@ class Variant < ApplicationRecord
         end
     end
 
+    def self.update_local_threshold_from_csv csv_file_path
+        ActiveRecord::Base.connection.execute(
+            "BEGIN TRANSACTION;
+            
+            CREATE TEMP TABLE temp_csv_table(
+                variant_id TEXT,
+                product_title TEXT,
+                sku TEXT,
+                local_threshold INT
+            );
+            
+            COPY temp_csv_table
+            FROM '#{csv_file_path}'
+            DELIMITER ','
+            CSV HEADER;
+            
+            UPDATE variants
+            SET local_threshold = temp_csv_table.local_threshold
+            FROM temp_csv_table
+            WHERE variants.shopify_variant_id = TRIM(LEADING '#' FROM temp_csv_table.variant_id)::BIGINT;
+
+            DROP TABLE temp_csv_table;
+            
+            COMMIT TRANSACTION;"
+        )
+    end
+
 end

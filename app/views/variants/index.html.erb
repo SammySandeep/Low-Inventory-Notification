@@ -18,32 +18,38 @@
         <%= link_to "Import CSV", variants_import_csv_path, :class => "btn edit_btn" %>
       </div>
       <div class="table-responsive">
-        <table id="variants-datatable" class="table table-bordered table-striped">
+        <table id="variants-datatable" data-source="<%= variants_path(format: :json) %>" class="table table-bordered table-striped" >
           <thead>
             <tr>
-              <th>Product Title</th>
+              <th>Product Title</th> 
               <th>SKU</th>
               <th>Quantity</th>
               <th>Threshold</th>
-              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
-            <%if @variants.present?%>
-              <%@variants.each do |variant|%>
-                <tr>
-                  <td><%= variant.product.title%></td>
-                  <td><%= variant.sku %></td>
-                  <td><%= variant.quantity %></td>
-                  <td id=<%=variant.id%>><%= variant.threshold %></td>
-                  <td> <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i></td>
-                </tr>
-              <% end %>
-            <%end%>
           </tbody>
+          
         </table>
       </div>
       <br>      
     </div>
   </body>
 </html>
+<script>
+  jQuery(document).ready(function() {
+    $('#variants-datatable').dataTable({
+      "processing": true,
+      "serverSide": true,
+      "columnDefs": [{ "orderable": false, "targets": -1 }],
+      "ajax": $('#variants-datatable').data('source'),
+      "pagingType": "full_numbers",
+      "columns": [
+        {"data": "product_title"},
+        {"data": "sku"},
+        {"data": "quantity"},
+        {"data": "threshold"},
+      ]
+    });
+  });
+</script>

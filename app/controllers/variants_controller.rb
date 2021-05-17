@@ -7,7 +7,10 @@ class VariantsController < ApplicationController
     if !current_shop.sync_complete
       flash.now[:notice] = "Products are still being synced to the application. We will notify you via email once it is completed."
     else
-      @variants = current_shop.variants
+      respond_to do |format|
+        format.html
+        format.json { render json: VariantDatatable.new(params, shop: current_shop) }
+      end
     end
   end
 

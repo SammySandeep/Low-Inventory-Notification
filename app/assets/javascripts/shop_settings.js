@@ -12,7 +12,8 @@ function editclicked(editElement){
     $(secondCol).replaceWith(function () {
         return `<td><select class="form-control" id=${shopId} value=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
         <option value=1>1</option>
-        <option value=7>7</option>
+        <option value=6>6</option>
+        <option value=12>12</option>
         <option value=24>24</option>
       </select></td>`;
     });

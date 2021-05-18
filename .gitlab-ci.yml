@@ -29,7 +29,7 @@ before_script:
    
 .only-default: &only-default
   only:
-    - master
+    - test
 
 build:
   stage: build

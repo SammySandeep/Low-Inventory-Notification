@@ -13,6 +13,7 @@ COPY Gemfile.lock /usr/src/app
 RUN apk --update add --no-cache --virtual run-dependencies \
   bash \
   build-base \
+  tzdata \
   postgresql-client \
   postgresql-dev \
   git

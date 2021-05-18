@@ -14,7 +14,6 @@ RUN apk --update add --no-cache --virtual run-dependencies \
   bash \
   build-base \
   tzdata \
-  aws-sdk-s3 \
   postgresql-client \
   postgresql-dev \
   git

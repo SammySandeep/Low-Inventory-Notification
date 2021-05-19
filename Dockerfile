@@ -22,6 +22,14 @@ RUN gem install bundler
 
 RUN bundle install
 
+RUN mkdir /usr/src/app/config
+
+COPY config/schedule.rb /usr/src/app/config/
+
+RUN touch /var/log/cron.log
+
+CMD whenever --update-crontab && crond && tail -f /var/log/cron.log
+
 RUN gem install rails -v 5.2.6
 
 COPY entrypoint.sh /usr/bin/

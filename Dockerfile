@@ -13,6 +13,7 @@ COPY Gemfile.lock /usr/src/app
 RUN apk --update add --no-cache --virtual run-dependencies \
   bash \
   build-base \
+  tzdata \
   postgresql-client \
   postgresql-dev \
   git
@@ -20,6 +21,14 @@ RUN apk --update add --no-cache --virtual run-dependencies \
 RUN gem install bundler
 
 RUN bundle install
+
+RUN mkdir /usr/src/app/config
+
+COPY config/schedule.rb /usr/src/app/config/
+
+RUN touch /var/log/cron.log
+
+RUN bundle exec whenever --update crontab
 
 RUN gem install rails -v 5.2.6
 
@@ -36,4 +45,4 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 
 # Start the main process.
-CMD dockerize -wait tcp://postgres:5432 -timeout 1m && rails server -b 0.0.0.0
+CMD dockerize -wait tcp://postgres:5432 -timeout 1m && rails server -b 0.0.0.0 && crond && tail -f /var/log/cron.log

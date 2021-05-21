@@ -4,6 +4,7 @@ class ExportCsvJob < ApplicationJob
 
     queue_as :default
 
+    # REFACTOR - See if this can be optimized
     def perform shop_id:
         csv_headers = ["Variant ID", "Product Title", "SKU", "Threshold"]
         csv_data = Product.export_products_data_to_csv(shop_id: shop_id).values

@@ -14,25 +14,8 @@ class LowInventoryStockService
 
     private
 
-    # REFACTOR WITH SQL
     def low_inventory_variants
-
-        products = Array.new
-
-        time = Benchmark.measure {
-            products = Variant.get_low_inventory_variants(shop_id: self.shop_id).values
-        }
-
-        # time = Benchmark.measure {
-            # shop.variants.each do |variant|
-            #     products.push([variant.shopify_variant_id, variant.product.title, variant.sku, variant.threshold]) if variant.quantity <= variant.threshold
-            # end
-        # }
-
-        puts "\nTIME TAKEN TO FETCH LOW INVENTORY VARIANTS: #{time.real}\n\n"
-        
-        return products
-
+        Variant.get_low_inventory_variants(shop_id: self.shop_id).first["variants_csv"].prepend("Variant ID,Product Title,SKU,Threshold\n")
     end
 
     def shop

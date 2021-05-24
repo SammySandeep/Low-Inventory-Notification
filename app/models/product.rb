@@ -13,10 +13,11 @@ class Product < ApplicationRecord
     def self.export_products_data_to_csv shop_id:
         ActiveRecord::Base.connection.execute(
             "SELECT  
-                CONCAT('#', variants.shopify_variant_id) AS id, 
-                products.title AS title, 
-                CONCAT('#', variants.sku) AS sku, 
-                variants.local_threshold AS threshold
+                STRING_AGG (
+                    CONCAT('#', variants.shopify_variant_id) || ',' || products.title || ',' || CONCAT('#', variants.sku) || ',' || COALESCE(variants.local_threshold::TEXT, ''),
+                    '\n'
+                )
+            AS products_csv
             FROM products 
             INNER JOIN variants ON variants.product_id=products.id 
             WHERE products.shop_id = #{shop_id}"

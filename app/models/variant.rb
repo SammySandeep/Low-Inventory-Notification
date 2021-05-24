@@ -8,11 +8,9 @@ class Variant < ApplicationRecord
     validates :local_threshold, numericality: { only_integer: true }, presence: true, allow_nil: true
 
     def threshold
-        if self.local_threshold.present?
-            self.local_threshold
-        else
-            self.product.shop.shop_setting.global_threshold
-        end
+        ActiveRecord::Base.connection.exec_query(
+            "SELECT threshold(#{self.local_threshold || "null"}, #{self.shop.shop_setting.global_threshold})"
+        ).rows.flatten.first
     end
 
     def self.update_local_threshold_from_csv csv_file_path

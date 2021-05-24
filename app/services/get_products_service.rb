@@ -1,4 +1,4 @@
-class Sync::GetProductsService
+class GetProductsService
 
     attr_reader :shop_id, :current_page_url
 

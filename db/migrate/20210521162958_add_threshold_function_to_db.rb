@@ -19,6 +19,6 @@ class AddThresholdFunctionToDb < ActiveRecord::Migration[5.2]
   end
 
   def down
-    connection.execute("CREATE FUNCTION threshold")
+    connection.execute("DROP FUNCTION threshold")
   end
 end

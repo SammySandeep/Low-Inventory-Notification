@@ -65,4 +65,27 @@ class Variant < ApplicationRecord
         )
     end
 
+    def self.get_low_inventory_variants shop_id:
+        ActiveRecord::Base.connection.execute(
+            "SELECT 
+                CONCAT('#', shopify_variant_id), 
+                title, 
+                CONCAT('#', sku), 
+                threshold
+            FROM (
+                SELECT 
+                    CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN variants.shopify_variant_id END AS shopify_variant_id,
+                    CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN products.title END AS title,
+                    CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN variants.sku END AS sku,
+                    CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN threshold(variants.local_threshold, shop_settings.global_threshold) END AS threshold
+            
+                FROM variants
+                INNER JOIN products ON variants.product_id = products.id
+                INNER JOIN shop_settings ON shop_settings.shop_id = #{shop_id}
+                WHERE variants.shop_id = #{shop_id} AND shopify_variant_id IS NOT NULL
+            ) AS low_inventory_stocks
+            WHERE shopify_variant_id IS NOT NULL;"
+        )
+    end
+
 end

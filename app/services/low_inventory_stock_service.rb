@@ -1,3 +1,5 @@
+require 'benchmark'
+
 class LowInventoryStockService
 
     attr_reader :shop_id
@@ -7,20 +9,30 @@ class LowInventoryStockService
     end
 
     def execute
-        GenerateReportJob.perform_later(shop_id: shop_id, products: low_inventory_products)
+        GenerateReportJob.perform_later(shop_id: shop_id, products: low_inventory_variants)
     end
 
     private
 
-    # REFACTOR
-    def low_inventory_products
+    # REFACTOR WITH SQL
+    def low_inventory_variants
+
         products = Array.new
 
-        shop.variants.each do |variant|
-            products.push([variant.shopify_variant_id, variant.product.title, variant.sku, variant.threshold]) if variant.quantity <= variant.threshold
-        end
+        time = Benchmark.measure {
+            products = Variant.get_low_inventory_variants(shop_id: self.shop_id).values
+        }
 
+        # time = Benchmark.measure {
+            # shop.variants.each do |variant|
+            #     products.push([variant.shopify_variant_id, variant.product.title, variant.sku, variant.threshold]) if variant.quantity <= variant.threshold
+            # end
+        # }
+
+        puts "\nTIME TAKEN TO FETCH LOW INVENTORY VARIANTS: #{time.real}\n\n"
+        
         return products
+
     end
 
     def shop

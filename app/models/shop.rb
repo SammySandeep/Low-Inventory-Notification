@@ -12,6 +12,7 @@ class Shop < ActiveRecord::Base
 
   after_create :sync_products_and_variants
 
+
   def api_version
     ShopifyApp.configuration.api_version
   end

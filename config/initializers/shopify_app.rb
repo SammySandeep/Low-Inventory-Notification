@@ -10,10 +10,10 @@ ShopifyApp.configure do |config|
   config.api_version = "2021-01"
   config.shop_session_repository = 'Shop'
   config.webhooks = [
-    { topic: 'products/create', address: "#{ENV['URL']}/shopify/products/create", format: 'json' },
-    { topic: 'products/update', address: "#{ENV['URL']}/shopify/products/update", format: 'json' },
-    { topic: 'products/delete', address: "#{ENV['URL']}/shopify/products/delete", format: 'json' },
-    { topic: 'app/uninstalled', address: "#{ENV['URL']}/shopify/delete", format: 'json' }
+    { topic: 'products/create', address: "#{ENV['URL']}/shopify/create", format: 'json' },
+    { topic: 'products/update', address: "#{ENV['URL']}/shopify/update", format: 'json' },
+    { topic: 'products/delete', address: "#{ENV['URL']}/shopify/delete", format: 'json' },
+    { topic: 'app/uninstalled', address: "#{ENV['URL']}/shopify/delete_app", format: 'json' }
   ]
   config.allow_jwt_authentication = true
 end

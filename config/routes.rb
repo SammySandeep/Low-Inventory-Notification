@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   resources :variants
   resources :shop_settings, :except => [:show]
   resources :emails, :except => [:show, :index, :edit, :update]
-  post '/shopify/products/create', to: 'shopify/products/products#create'
-  post '/shopify/products/update', to: 'shopify/products/products#update'
-  post '/shopify/products/delete', to: 'shopify/products/products#delete'
-  post '/shopify/delete', to: 'shopify/apps#delete'
+  post '/shopify/create', to: 'shopify/products#create'
+  post '/shopify/update', to: 'shopify/products#update'
+  post '/shopify/delete', to: 'shopify/products#delete'
+  post '/shopify/delete_app', to: 'shopify/apps#delete_app'
 
   root :to => 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

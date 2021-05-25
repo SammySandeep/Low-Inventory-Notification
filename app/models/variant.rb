@@ -44,15 +44,18 @@ class Variant < ApplicationRecord
         ActiveRecord::Base.connection.execute(
             "BEGIN TRANSACTION;
             
-            INSERT INTO variants (shop_id, shopify_variant_id, sku, quantity, product_id, created_at, updated_at)
-            SELECT #{shop_id}, shopify_variant_id, sku, quantity, product_id, created_at, updated_at FROM
+            INSERT INTO variants (shop_id, product_id, shopify_variant_id, sku, quantity, created_at, updated_at)
+            SELECT 
+                #{shop_id} AS shop_id, 
+                (SELECT id FROM products WHERE products.shopify_product_id = variants_json.shopify_product_id LIMIT 1) AS product_id, 
+                shopify_variant_id, sku, quantity, created_at, updated_at 
+            FROM
             (
                 SELECT
                     (json_array_elements(products_json -> 'variants') ->> 'id')::BIGINT AS shopify_variant_id,
-                    json_array_elements(products_json -> 'variants') ->> 'product_id' AS shopify_product_id,
+                    (json_array_elements(products_json -> 'variants') ->> 'product_id')::BIGINT AS shopify_product_id,
                     json_array_elements(products_json -> 'variants') ->> 'sku' AS sku,
                     (json_array_elements(products_json -> 'variants') ->> 'inventory_quantity')::INTEGER AS quantity,
-                    (SELECT id FROM products WHERE shopify_product_id = shopify_product_id LIMIT 1) AS product_id,
                     timezone('utc', now()) AS created_at,
                     timezone('utc', now()) AS updated_at
                 FROM json_array_elements(
@@ -60,7 +63,7 @@ class Variant < ApplicationRecord
                 #{shopify_products_json}
                 $$::json) AS products_json
             ) AS variants_json;
-            
+
             COMMIT TRANSACTION;"
         )
     end

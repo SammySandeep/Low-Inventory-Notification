@@ -112,6 +112,8 @@ class Variant < ApplicationRecord
                         || ',' || 
                         CONCAT('#', sku) 
                         || ',' || 
+                        quantity 
+                        || ',' || 
                         threshold,
                         '\n'
                     ) 
@@ -121,6 +123,7 @@ class Variant < ApplicationRecord
                     CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN variants.shopify_variant_id END AS shopify_variant_id,
                     CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN products.title END AS title,
                     CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN variants.sku END AS sku,
+                    CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN variants.quantity END AS quantity,
                     CASE WHEN variants.quantity <= threshold(variants.local_threshold, shop_settings.global_threshold) THEN threshold(variants.local_threshold, shop_settings.global_threshold) END AS threshold
                     
                     FROM variants

@@ -105,5 +105,25 @@ class Variant < ApplicationRecord
             SQL
         )
     end
+
+    # Certain versions of excel changes format of big numbers. Eg: 32274860376127 to 3227+e1
+    # Prepending shopify_variant_id and sku with # converts it to text and preserves the number
+    # Since this method is used ONLY to export products to csv, this change has been made
+    def self.export_variants_data_to_csv shop_id:
+        ActiveRecord::Base.connection.execute(
+            <<-SQL
+                SELECT  
+                    CONCAT('#', variants.shopify_variant_id) AS id, 
+                    products.title AS title, 
+                    CONCAT('#', variants.sku) AS sku, 
+                    COALESCE(variants.local_threshold, shop_settings.global_threshold) AS threshold
+                FROM variants
+                INNER JOIN products ON variants.product_id = products.id 
+                INNER JOIN shops ON products.shop_id = shops.id
+                INNER JOIN shop_settings ON shop_settings.shop_id = shops.id
+                WHERE products.shop_id = #{shop_id}
+            SQL
+        )
+    end
         
 end

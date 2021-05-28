@@ -53,6 +53,7 @@ class Variant < ApplicationRecord
                     CONCAT('#', variants.shopify_variant_id) AS id, 
                     products.title AS title, 
                     CONCAT('#', variants.sku) AS sku, 
+                    variants.quantity AS quantity, 
                     COALESCE(variants.local_threshold, shop_settings.global_threshold) AS threshold
                 FROM variants
                 INNER JOIN products ON variants.product_id = products.id 

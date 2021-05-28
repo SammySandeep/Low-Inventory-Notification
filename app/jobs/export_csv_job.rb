@@ -5,7 +5,7 @@ class ExportCsvJob < ApplicationJob
     queue_as :default
 
     def perform shop_id:
-        csv_headers = ["Variant ID", "Product Title", "SKU", "Threshold"]
+        csv_headers = ["Variant ID", "Product Title", "SKU", "Quantity", "Threshold"]
         csv_data = Variant.export_variants_data_to_csv(shop_id: shop_id).values
     
         csv_string = CSV.generate(write_headers: true, headers: csv_headers) do |csv|

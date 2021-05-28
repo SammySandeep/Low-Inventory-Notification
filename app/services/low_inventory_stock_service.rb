@@ -1,5 +1,3 @@
-require 'benchmark'
-
 class LowInventoryStockService
 
     attr_reader :shop_id

@@ -105,7 +105,13 @@ class Variant < ApplicationRecord
             <<-SQL
                 SELECT
                     STRING_AGG (
-                        CONCAT('#', shopify_variant_id) || ',' || title || ',' || CONCAT('#', sku) || ',' || threshold,
+                        CONCAT('#', shopify_variant_id) 
+                        || ',' || 
+                        REPLACE(REPLACE(title, ',', ' '), '\n', ' ')
+                        || ',' || 
+                        CONCAT('#', sku) 
+                        || ',' || 
+                        threshold,
                         '\n'
                     ) 
                 AS variants_csv

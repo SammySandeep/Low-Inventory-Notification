@@ -13,10 +13,29 @@
       <div id="snackbar-success">
         Threshold successfully updated!
       </div>
-      <div>
-        <%= link_to "Export CSV", variants_export_csv_path, remote: true, :class => "btn"%>
-        <%= link_to "Import CSV", variants_import_csv_path, :class => "btn" %>
+      <div id="export-csv-notification">
+        Please wait while the products are being emailed as a CSV file.<br/> This will take few minutes!
       </div>
+      <div id="import-csv-success">
+        Variants Treshold successfully updated!
+      </div>
+      <div id="import-csv-error">
+        There was an error updating Variants Treshold. Please refer to the csv file format on the Home page.
+      </div>
+      <div>
+        <%= link_to "Export CSV", variants_export_csv_path, remote: true, :class => "btn export-csv-btn"%>
+        <%
+=begin%>
+ <%= link_to "Import CSV", variants_import_csv_path, :class => "btn import-csv-btn" %> 
+<%
+=end%>
+         <%= link_to 'Import CSV', variants_import_csv_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn import-csv-btn'}  %>
+      </div>
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+      </div>
+  </div>
       <div class="table-responsive">
         <table id="variants-datatable" class="table table-bordered table-striped">
           <thead>
@@ -47,3 +66,6 @@
     </div>
   </body>
 </html>
+<script>
+document.getElementById("loading-symbol").style.display = "none";
+</script>

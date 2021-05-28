@@ -1,0 +1,10 @@
+$('#modal-window').modal('hide');
+<% if @status == 1%>
+    var divElementforImportCsvsuccess = document.getElementById("import-csv-success");
+    divElementforImportCsvsuccess.className = "show";
+    setTimeout(function(){ divElementforImportCsvsuccess.className = divElementforImportCsvsuccess.className.replace("show", ""); }, 3000);
+<% else %>
+     var divElementforImportCsverror = document.getElementById("import-csv-error");
+    divElementforImportCsverror.className = "show";
+    setTimeout(function(){ divElementforImportCsverror.className = divElementforImportCsverror.className.replace("show", ""); }, 3000);
+<% end %>

@@ -19,23 +19,45 @@ class VariantsController < ApplicationController
 
   def export_csv
     ExportCsvJob.perform_later(shop_id: current_shop.id)
-    # respond_to do |format|
-      # format.html { redirect_to variants_path, notice: 'CSV Generation is in Queue, will send an email once done please be patient' }
-      # format.js
-    # end
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def import_csv
+    # binding.pry
+    # variant_update = Variant.update_local_threshold_from_csv(params[:file].path)
+    # respond_to do |format|
+    #   if variant_update.result_status == 1
+    #     format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
+    #   else
+    #     format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
+    #   end
+    # end
   end
 
+  # def import_csv
+  #   variant_update = Variant.update_local_threshold_from_csv(params[:file].path)
+  #   respond_to do |format|
+  #     format.js
+  #     # if variant_update.result_status == 1
+  #     #   format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
+  #     # else
+  #     #   format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
+  #     # end
+  #   end
+  # end
+
   def update_csv_threshold
-    variant_update = Variant.update_local_threshold_from_csv(params[:file].path)
+    # variant_update = Variant.update_local_threshold_from_csv(params[:file].path)
+    @status = 1
     respond_to do |format|
-      if variant_update.result_status == 1
-        format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
-      else
-        format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
-      end
+      format.js
+    #   if variant_update.result_status == 1
+    #     format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
+    #   else
+    #     format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
+    #   end
     end
   end
 

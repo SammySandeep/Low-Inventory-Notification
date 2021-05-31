@@ -1,7 +1,7 @@
 class AddThresholdFunctionToDb < ActiveRecord::Migration[5.2]
   def up
     connection.execute(
-      "CREATE FUNCTION threshold(local_threshold int, global_threshold int)
+      "CREATE OR REPLACE FUNCTION threshold(local_threshold int, global_threshold int)
       RETURNS int AS $$
       DECLARE threshold int;
       BEGIN

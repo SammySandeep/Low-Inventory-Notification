@@ -49,15 +49,13 @@ class VariantsController < ApplicationController
   # end
 
   def update_csv_threshold
-    # variant_update = Variant.update_local_threshold_from_csv(params[:file].path)
-    @status = 1
+    @import_csv_successul = ImportCsvService.new(shop_id: current_shop.id, file_path: params[:file].path).execute
     respond_to do |format|
-      format.js
-    #   if variant_update.result_status == 1
-    #     format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
-    #   else
-    #     format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
-    #   end
+      if @import_csv_successul
+        format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
+      else
+        format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
+      end
     end
   end
 

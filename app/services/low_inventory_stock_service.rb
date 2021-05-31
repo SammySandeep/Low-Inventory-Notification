@@ -1,5 +1,3 @@
-require 'benchmark'
-
 class LowInventoryStockService
 
     attr_reader :shop_id
@@ -15,7 +13,7 @@ class LowInventoryStockService
     private
 
     def low_inventory_variants
-        Variant.get_low_inventory_variants(shop_id: self.shop_id).first["variants_csv"].prepend("Variant ID,Product Title,SKU,Threshold\n")
+        Variant.get_low_inventory_variants(shop_id: self.shop_id).first["variants_csv"].prepend("Variant ID,Product Title,SKU,Quantity,Threshold\n")
     end
 
 end

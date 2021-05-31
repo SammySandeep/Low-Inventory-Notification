@@ -24,11 +24,6 @@
       </div>
       <div>
         <%= link_to "Export CSV", variants_export_csv_path, remote: true, :class => "btn export-csv-btn"%>
-        <%
-=begin%>
- <%= link_to "Import CSV", variants_import_csv_path, :class => "btn import-csv-btn" %> 
-<%
-=end%>
          <%= link_to 'Import CSV', variants_import_csv_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn import-csv-btn'}  %>
       </div>
       <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -66,6 +61,3 @@
     </div>
   </body>
 </html>
-<script>
-document.getElementById("loading-symbol").style.display = "none";
-</script>

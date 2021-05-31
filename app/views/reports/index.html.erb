@@ -1,20 +1,20 @@
 <%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>  
 <div class="container text-center" style="margin-bottom:20">
-<h3><b>Reports List</b></h3>
+  <h3><b>Reports List</b></h3>
 </div>
 <div class="container text-center" style="margin-bottom:20">    
-<% if @reports.present? %>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <th>Created At</th>
-        <th>Download</th>
-      </thead>
+  <% if @reports.present? %>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <th>Created At</th>
+          <th>Download</th>
+        </thead>
 
-      <tbody id='reports'>
-        <%= render @reports %>
-      </tbody>
-    </table>
+        <tbody id='reports'>
+          <%= render @reports %>
+        </tbody>
+      </table>
     </div>
-    </div>
-<% end %> 
+  <% end %> 
+</div>

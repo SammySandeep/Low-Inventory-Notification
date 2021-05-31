@@ -1,5 +1,4 @@
 function editIconclicked(editElement){
-    var editIconid = editElement.id;   
     var previousTd = $(editElement).closest('td');
     var thresholdInputTd = $(previousTd).prev();
     var variantId = $(thresholdInputTd).attr('id');   

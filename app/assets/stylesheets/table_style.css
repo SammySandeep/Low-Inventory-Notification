@@ -143,6 +143,70 @@
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
 
+  #export-csv-notification {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:#008000;
+    color: #fff;
+    text-align: center; 
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  #export-csv-notification.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+
+  #import-csv-success  {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:#008000;
+    color: #fff;
+    text-align: center; 
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  #import-csv-error  {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color:	#FF0000;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #import-csv-success.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  #import-csv-error.show{
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
   @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;} 
     to {bottom: 30px; opacity: 1;}

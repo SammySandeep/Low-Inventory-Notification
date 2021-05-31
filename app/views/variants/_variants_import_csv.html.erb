@@ -1,0 +1,15 @@
+<div class="modal-header" style="color:black">
+  <button type="button" style="position:absolute;padding:25px 10px 10px 20px;color:red;" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" style="margin-left:75px;" id="myModalLabel"><b>Upload File</b></h4>
+</div>
+<%= form_tag( { :action => 'update_csv_threshold' },:remote => true, :multipart => true) %>
+  <br/>
+  <h6>Please click on choose file or drag and drop file here.</h6>
+  <div class="file-upload-wrapper">
+    <input type="file" id="input-file-now" class="file-upload choose_file_btn" style="width:300px;height:100px;" name="file" />
+  </div>
+  <br /><br />
+  <div id="submit">
+    <%= submit_tag( "Upload file" ,:class=>"upload_file_submit") %>
+  </div>
+<% end %>

@@ -13,6 +13,11 @@
   color: white;
   float: right;
 }
+.back-btn,.back-btn:hover,.back-btn:focus,.back-btn:active{
+  background-color: #2D2B75;
+  color: white;
+
+}
 .back_btn,.back_btn:hover,.back_btn:focus,.back_btn:active{
   background-color: #2D2B75;
   color: white;
@@ -52,6 +57,23 @@
   background: #2e2c75;
   border-color: #2e2c75;
 }
+.submit-btn,.submit-btn:hover,.submit-btn:focus,.submit-btn:active{
+  color: #fff;
+  background: #2e2c75;
+  border-color: #2e2c75;
+}
+.export-csv-btn,.export-csv-btn:hover,.export-csv-btn:focus,.export-csv-btn:active{
+  color: #fff;
+  background: #2e2c75;
+  border-color: #2e2c75;
+}
+
+.import-csv-btn,.import-csv-btn:hover,.import-csv-btn:focus,.import-csv-btn:active{
+  color: #fff;
+  background: #2e2c75;
+  border-color: #2e2c75;
+}
+
 .add_email_btn,.add_email_btn:hover,.add_email_btn:focus,.add_email_btn:active{
   color: #fff;
   background: #2e2c75;
@@ -63,4 +85,17 @@
   color: #fff;
   background: #2e2c75;
   border-color: #2e2c75;
+}
+.choose_file_btn,.choose_file_btn:hover,.choose_file_btn:focus,.choose_file_btn:active{
+  background-color: #2D2B75;
+  color: white;
+}
+.choose_file_btn,.choose_file_btn:hover,.choose_file_btn:focus,.choose_file_btn:active{
+  background-color: #2D2B75;
+  color: white;
+}
+.upload_file_submit,.upload_file_submit:hover,.upload_file_submit:focus,.upload_file_submit:active{
+  background-color: #2D2B75;
+  color: white;
+  margin-bottom: 20px;
 }

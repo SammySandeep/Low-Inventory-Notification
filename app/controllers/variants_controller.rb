@@ -19,23 +19,18 @@ class VariantsController < ApplicationController
 
   def export_csv
     ExportCsvJob.perform_later(shop_id: current_shop.id)
-    # respond_to do |format|
-      # format.html { redirect_to variants_path, notice: 'CSV Generation is in Queue, will send an email once done please be patient' }
-      # format.js
-    # end
+    respond_to do |format|
+      format.js
+    end 
   end
 
   def import_csv
   end
 
   def update_csv_threshold
-    @import_csv_successul = ImportCsvService.new(shop_id: current_shop.id, file_path: params[:file].path).execute
+    @import_csv_successful = ImportCsvService.new(shop_id: current_shop.id, file_path: params[:file].path).execute
     respond_to do |format|
-      if @import_csv_successul
-        format.html { redirect_to variants_path, notice: "Variants Treshold successfully updated" }
-      else
-        format.html { redirect_to variants_path, alert: "There was an error updating Variants Treshold" }
-      end
+      format.js
     end
   end
 

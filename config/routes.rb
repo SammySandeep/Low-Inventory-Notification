@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   get '/variants/export_csv'
   get '/variants/import_csv', to: 'variants#import_csv', as: 'variants_import_csv'
   post '/variants/update_csv_threshold', to: 'variants#update_csv_threshold'
-  put '/variants', to: 'variants#update'
+  put '/variants/', to: 'variants#update'
   
   post '/shopify/products/create', to: 'shopify/products/products#create'
   post '/shopify/products/update', to: 'shopify/products/products#update'
   post '/shopify/products/delete', to: 'shopify/products/products#delete'
   
-  resources :variants, except: [:update]
+  resources :variants
   resources :shop_settings, :except => [:show]
   resources :emails, :except => [:show, :index, :edit, :update]
 

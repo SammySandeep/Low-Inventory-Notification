@@ -1,5 +1,5 @@
 $('#modal-window').modal('hide');
-<% if @status == 1%>
+<% if @import_csv_successful %>
     var divElementforImportCsvsuccess = document.getElementById("import-csv-success");
     divElementforImportCsvsuccess.className = "show";
     setTimeout(function(){ divElementforImportCsvsuccess.className = divElementforImportCsvsuccess.className.replace("show", ""); }, 3000);

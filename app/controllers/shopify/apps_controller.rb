@@ -4,6 +4,7 @@ class Shopify::AppsController < ApplicationController
     
     def uninstalled
         AppDeleteWebhookJob.perform_later(params[:domain])
+        head :ok
     end
 
 end

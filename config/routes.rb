@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post '/shopify/products/update', to: 'shopify/products#update'
   post '/shopify/products/delete', to: 'shopify/products#delete'
   
-  post '/shopify/app/delete', to: 'shopify/apps#uninstalled'
+  post '/shopify/app/uninstalled', to: 'shopify/apps#uninstalled'
 
   resources :variants
   resources :shop_settings, :except => [:show]

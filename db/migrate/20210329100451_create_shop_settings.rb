@@ -3,10 +3,8 @@ class CreateShopSettings < ActiveRecord::Migration[5.2]
     create_table :shop_settings do |t|
       t.integer :global_threshold
       t.integer :alert_frequency
-      t.integer :shop_id
+      t.references :shop, foreign_key: {on_delete: :cascade}
       t.timestamps
     end
-
-    add_index :shop_settings, :shop_id
   end
 end

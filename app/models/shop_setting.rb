@@ -1,6 +1,6 @@
 class ShopSetting < ApplicationRecord
     
-    has_many :emails, dependent: :destroy
+    has_many :emails
     
     belongs_to :shop
     

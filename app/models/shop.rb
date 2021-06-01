@@ -4,11 +4,11 @@ class Shop < ActiveRecord::Base
   include ShopifyApp::ShopSessionStorage
   include ShopifyModule
 
-  has_many :products, dependent: :destroy
-  has_many :variants, dependent: :destroy
-  has_many :reports, dependent: :destroy
+  has_many :products
+  has_many :variants
+  has_many :reports
 
-  has_one :shop_setting, dependent: :destroy
+  has_one :shop_setting
 
   after_create :sync_products_and_variants
 

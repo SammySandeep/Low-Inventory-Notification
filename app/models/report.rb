@@ -1,4 +1,5 @@
 class Report < ApplicationRecord
+    
     belongs_to :shop
 
     def file_url

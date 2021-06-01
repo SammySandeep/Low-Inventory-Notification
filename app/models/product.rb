@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
 
-    has_many :variants
-
     belongs_to :shop
+    
+    has_many :variants
 
     validates :title, presence: true
     validates :shopify_product_id, presence: true, uniqueness: true

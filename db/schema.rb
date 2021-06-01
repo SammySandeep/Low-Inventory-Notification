@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_05_21_162958) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "file_name"
+    t.string "file_name", null: false
     t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2021_05_21_162958) do
   end
 
   create_table "shop_settings", force: :cascade do |t|
-    t.integer "global_threshold"
-    t.integer "alert_frequency"
+    t.integer "global_threshold", null: false
+    t.integer "alert_frequency", null: false
     t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

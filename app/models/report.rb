@@ -5,7 +5,7 @@ class Report < ApplicationRecord
     validates :file_name, presence: true
 
     def file_url
-        "https://#{ENV["DO_SPACE_NAME"]}.#{ENV["DO_SPACES_CDN_ENDPOINT"]}/reports/#{self.shop_name}/#{self.file_name}"
+        "https://#{ENV["DO_SPACE_NAME"]}.#{ENV["DO_SPACES_CDN_ENDPOINT"]}/lina/reports/#{self.shop_name}/#{self.file_name}"
     end
     
     def created_at

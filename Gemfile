@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'whenever', require: false
 gem 'aws-sdk-s3', '~> 1'
+gem 'ajax-datatables-rails'
 gem 'jquery-datatables'
 
 # Use Puma as the app server

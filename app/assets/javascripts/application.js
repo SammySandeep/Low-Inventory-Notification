@@ -20,7 +20,3 @@
 //= require bootstrap
 //= require 'variants'
 //= require datatables
-
-document.addEventListener("turbolinks:load", function() {
-    $("#variants-datatable").dataTable();
-});

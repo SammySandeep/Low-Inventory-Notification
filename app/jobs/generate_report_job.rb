@@ -10,7 +10,7 @@ class GenerateReportJob < ApplicationJob
         file_name = "#{Time.now.utc.to_formatted_s(:number)}_#{shop_name}.csv"
 
         # upload csv and create report
-        DigitalOcean::Spaces::UploadFileService.new(file_name: file_name, file_contents: products, path: "reports/#{shop_name}").execute
+        DigitalOcean::Spaces::UploadFileService.new(file_name: file_name, file_contents: products, path: "lina/reports/#{shop_name}").execute
         @report = Report.create!(shop_id: shop_id, file_name: file_name)
 
         # notify

@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   post '/variants/update_csv_threshold', to: 'variants#update_csv_threshold'
   put '/variants/', to: 'variants#update'
   
-  post '/shopify/products/create', to: 'shopify/products/products#create'
-  post '/shopify/products/update', to: 'shopify/products/products#update'
-  post '/shopify/products/delete', to: 'shopify/products/products#delete'
+  post '/shopify/products/create', to: 'shopify/products#create'
+  post '/shopify/products/update', to: 'shopify/products#update'
+  post '/shopify/products/delete', to: 'shopify/products#delete'
   
+  post '/shopify/app/uninstalled', to: 'shopify/apps#uninstalled'
+
   resources :variants
   resources :shop_settings, :except => [:show]
   resources :emails, :except => [:show, :index, :edit, :update]

@@ -1,7 +1,9 @@
-class Shopify::Products::ProductsController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    before_action :shopify_product_params, only: %i[create update delete]
-    before_action :shop_id, only: [:create]
+class Shopify::ProductsController < ApplicationController
+    
+  skip_before_action :verify_authenticity_token
+  
+  before_action :shopify_product_params, only: %i[create update delete]
+  before_action :shop_id, only: [:create]
     
   def create
     ProductsCreateWebhookJob.perform_later(shopify_product_params.to_h, shop_id)

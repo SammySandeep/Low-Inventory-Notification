@@ -16,18 +16,18 @@ ActiveRecord::Schema.define(version: 2021_05_21_162958) do
   enable_extension "plpgsql"
 
   create_table "emails", force: :cascade do |t|
-    t.text "email"
+    t.text "email", null: false
     t.boolean "is_active", default: true
-    t.integer "shop_setting_id"
+    t.bigint "shop_setting_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_setting_id"], name: "index_emails_on_shop_setting_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.text "title"
-    t.bigint "shopify_product_id"
-    t.integer "shop_id"
+    t.text "title", null: false
+    t.bigint "shopify_product_id", null: false
+    t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_products_on_shop_id"
@@ -35,17 +35,17 @@ ActiveRecord::Schema.define(version: 2021_05_21_162958) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "file_name"
-    t.integer "shop_id"
+    t.string "file_name", null: false
+    t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_reports_on_shop_id"
   end
 
   create_table "shop_settings", force: :cascade do |t|
-    t.integer "global_threshold"
-    t.integer "alert_frequency"
-    t.integer "shop_id"
+    t.integer "global_threshold", null: false
+    t.integer "alert_frequency", null: false
+    t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_shop_settings_on_shop_id"
@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(version: 2021_05_21_162958) do
 
   create_table "variants", force: :cascade do |t|
     t.string "sku"
-    t.integer "quantity"
-    t.bigint "shopify_variant_id"
+    t.integer "quantity", null: false
+    t.bigint "shopify_variant_id", null: false
     t.integer "local_threshold"
-    t.integer "product_id"
-    t.integer "shop_id"
+    t.bigint "product_id"
+    t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_variants_on_product_id"
@@ -75,4 +75,10 @@ ActiveRecord::Schema.define(version: 2021_05_21_162958) do
     t.index ["sku"], name: "index_variants_on_sku"
   end
 
+  add_foreign_key "emails", "shop_settings", on_delete: :cascade
+  add_foreign_key "products", "shops", on_delete: :cascade
+  add_foreign_key "reports", "shops", on_delete: :cascade
+  add_foreign_key "shop_settings", "shops", on_delete: :cascade
+  add_foreign_key "variants", "products", on_delete: :cascade
+  add_foreign_key "variants", "shops", on_delete: :cascade
 end

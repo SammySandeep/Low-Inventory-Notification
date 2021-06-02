@@ -12,7 +12,8 @@ ShopifyApp.configure do |config|
   config.webhooks = [
     { topic: 'products/create', address: "#{ENV['URL']}/shopify/products/create", format: 'json' },
     { topic: 'products/update', address: "#{ENV['URL']}/shopify/products/update", format: 'json' },
-    { topic: 'products/delete', address: "#{ENV['URL']}/shopify/products/delete", format: 'json' }
+    { topic: 'products/delete', address: "#{ENV['URL']}/shopify/products/delete", format: 'json' },
+    { topic: 'app/uninstalled', address: "#{ENV['URL']}/shopify/app/uninstalled", format: 'json' }
   ]
   config.allow_jwt_authentication = true
 end

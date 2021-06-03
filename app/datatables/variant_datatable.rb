@@ -6,7 +6,7 @@ class VariantDatatable < AjaxDatatablesRails::ActiveRecord
       sku:  { source: "Variant.sku", cond: :like, searchable: true},
       quantity:  { source: "Variant.quantity", cond: :eq, searchable: true },
       threshold: { source: "Variant.local_threshold", cond: :eq, searchable: true },
-      edit: {}
+      edit: { searchable: false }
     }
   end
     

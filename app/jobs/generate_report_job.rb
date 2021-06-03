@@ -14,7 +14,7 @@ class GenerateReportJob < ApplicationJob
         @report = Report.create!(shop_id: shop_id, file_name: file_name)
 
         # notify
-        cc_emails = @shop.shop_setting.emails.where(is_active: true).join(",")
+        cc_emails = @shop.shop_setting.emails.where(is_active: true).pluck(:email).join(",")
         SendReportMailer.notify(to: @shop.admin_email, cc: cc_emails, report_id: @report.id).deliver_later
     end
 end

@@ -3,7 +3,7 @@ class ReportDatatable < AjaxDatatablesRails::ActiveRecord
     def view_columns
       @view_columns ||= {
         created_at: { source: "Report.created_at", cond: :like, searchable: true},
-        download: {}
+        download: { searchable: false }
       }
     end
       

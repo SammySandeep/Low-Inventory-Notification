@@ -9,7 +9,7 @@ class Report < ApplicationRecord
     end
     
     def created_at
-        attributes['created_at'].strftime("%d %m %Y  %H:%M:%S")
+        attributes['created_at'].strftime("%d %b %Y  %H:%M:%S%p")
     end
 
     private

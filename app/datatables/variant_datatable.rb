@@ -17,7 +17,7 @@ class VariantDatatable < AjaxDatatablesRails::ActiveRecord
         sku: record.sku,
         quantity: record.quantity,
         threshold: record.threshold,
-        edit: '<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>'.html_safe,
+        edit: '<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>'.html_safe,
         DT_RowId: record.id
       }
     end

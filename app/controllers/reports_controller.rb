@@ -3,21 +3,24 @@ class ReportsController < ApplicationController
 
   def index
     if current_shop.shop_setting.present?
-      @reports = current_shop.reports 
+      respond_to do |format|
+        format.html
+        format.json { render json: ReportDatatable.new(params, shop: current_shop, view_context: view_context) }
+      end 
     else
       redirect_to new_shop_setting_path
     end
   end
 
   def download
-    @report = Report.find(params[:format])
+    @report = Report.find(params[:report_download][:report_id])
     redirect_to @report.file_url
   end
 
   private
 
   def csv_params
-    params.permit(:report_id)
+    params.require(:report_download).permit(:report_id)
   end
 
 end

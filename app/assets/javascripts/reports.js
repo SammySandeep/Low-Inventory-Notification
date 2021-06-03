@@ -1,0 +1,12 @@
+function downloadIconclicked(reportsdownloadicon) {
+    var previousTd1 = $(reportsdownloadicon).closest('td');
+    var reportsTr = $(previousTd1).closest('tr');
+    var reportId = $(reportsTr).attr('id'); 
+    Rails.ajax({
+        url: `/reports/download/${reportId}`,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: `report_download[report_id]=${reportId}`
+    }) 
+}

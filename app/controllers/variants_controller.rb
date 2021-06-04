@@ -38,6 +38,7 @@ class VariantsController < ApplicationController
   end
 
   def update
+    binding.pry
     global_threshold = current_shop.shop_setting.global_threshold
     if !(global_threshold == (params[:variant][:local_threshold].to_i))
       @variant.update(variant_params)

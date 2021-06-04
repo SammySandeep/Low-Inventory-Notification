@@ -5,7 +5,7 @@ class Variant < ApplicationRecord
     
     validates :quantity, numericality: { only_integer: true }, presence: true
     validates :shopify_variant_id, presence: true, uniqueness: true
-    validates :local_threshold, numericality: { only_integer: true }, presence: true, allow_nil: true
+    validates :local_threshold, numericality: { only_integer: true, greater_than_or_equal_to: 0}, presence: true, allow_nil: true
 
     def threshold
         ActiveRecord::Base.connection.exec_query(

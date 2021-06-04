@@ -3,7 +3,10 @@ class ReportsController < ApplicationController
 
   def index
     if current_shop.shop_setting.present?
-      @reports = current_shop.reports 
+      respond_to do |format|
+        format.html
+        format.json { render json: ReportDatatable.new(params, shop: current_shop, view_context: view_context) }
+      end 
     else
       redirect_to new_shop_setting_path
     end

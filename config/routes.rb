@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/help/index'
 
   get '/reports/index'
-  get '/reports/download/:id', to: 'reports#download'
+  get '/reports/download', to: 'reports#download'
 
   get '/variants/export_csv'
   get '/variants/import_csv', to: 'variants#import_csv', as: 'variants_import_csv'

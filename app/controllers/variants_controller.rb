@@ -40,9 +40,9 @@ class VariantsController < ApplicationController
   def update
     global_threshold = current_shop.shop_setting.global_threshold
     if !(global_threshold == (params[:variant][:local_threshold].to_i))
-      @variant.update!(variant_params)
+      @variant.update(variant_params)
     else
-      @variant.update!(local_threshold: nil)
+      @variant.update(local_threshold: nil)
     end
     respond_to do |format|
       format.js

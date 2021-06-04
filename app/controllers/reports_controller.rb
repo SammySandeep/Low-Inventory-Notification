@@ -13,14 +13,15 @@ class ReportsController < ApplicationController
   end
 
   def download
-    @report = Report.find(params[:report_download][:report_id])
+    binding.pry
+    @report = Report.find(params[:report_id])
     redirect_to @report.file_url
   end
 
   private
 
   def csv_params
-    params.require(:report_download).permit(:report_id)
+    params.permit(:report_id)
   end
 
 end

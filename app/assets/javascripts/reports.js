@@ -7,6 +7,6 @@ function downloadIconclicked(reportsdownloadicon) {
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: `report_download[report_id]=${reportId}`
+        data: `report_id=${reportId}`
     }) 
 }

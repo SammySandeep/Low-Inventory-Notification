@@ -13,7 +13,6 @@ class ReportsController < ApplicationController
   end
 
   def download
-    binding.pry
     @report = Report.find(params[:report_id])
     redirect_to @report.file_url
   end

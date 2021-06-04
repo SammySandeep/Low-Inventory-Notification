@@ -13,4 +13,3 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( nav_style.css table_style.css button_style.css form_style.css )
-Rails.application.config.assets.precompile += %w(edit_variants.js)

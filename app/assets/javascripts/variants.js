@@ -1,3 +1,20 @@
+jQuery(document).on('turbolinks:load', function() {
+    $('#variants-datatable').dataTable({
+        "processing": true,
+        "serverSide": true,
+        "columnDefs": [{ "orderable": false, "targets": -1 }],
+        "ajax": $('#variants-datatable').data('source'),
+        "pagingType": "full_numbers",
+        "columns": [
+        {"data": "product_title"},
+        {"data": "sku"},
+        {"data": "quantity"},
+        {"data": "threshold"},
+        {"data": "edit"}
+        ]
+    });
+});
+
 function editIconclicked(editElement){
     var previousTd = $(editElement).closest('td');
     var thresholdInputTd = $(previousTd).prev();

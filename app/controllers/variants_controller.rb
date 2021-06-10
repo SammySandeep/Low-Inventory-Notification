@@ -1,6 +1,6 @@
 class VariantsController < ApplicationController
   
-  before_action :set_variant, only: [:show, :update]
+  before_action :set_variant, only: [:update]
   before_action :shop_setting_created?
   
   def index
@@ -12,9 +12,6 @@ class VariantsController < ApplicationController
         format.json { render json: VariantDatatable.new(params, shop: current_shop) }
       end
     end
-  end
-
-  def show
   end
 
   def edit
@@ -39,6 +36,7 @@ class VariantsController < ApplicationController
 
   def update
     global_threshold = current_shop.shop_setting.global_threshold
+    @current_variant_threshold = @variant.threshold
     if !(global_threshold == (params[:variant][:local_threshold].to_i))
       @variant.update(variant_params)
     else

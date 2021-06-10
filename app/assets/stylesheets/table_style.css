@@ -227,14 +227,9 @@
     to {bottom: 0; opacity: 0;}
   }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+@media screen and (max-width: 480px) and (min-width: 300px){
+  div.dataTables_wrapper div.dataTables_length label {
+    margin-top: 10px;
+    margin-left: 63px;
+  }
 }

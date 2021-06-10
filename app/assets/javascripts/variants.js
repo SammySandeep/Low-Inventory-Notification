@@ -23,7 +23,7 @@ function editIconclicked(editElement){
     var thresholdTdValue = $(thresholdInputTd).text();
     $(thresholdInputTd).replaceWith(function () {
         return `<div class="input-group"><input class=form-control-sm min="1" style='display:inline;width:80%;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;' type=number value=${parseInt(thresholdInputTd.text())} > <span class="input-group-btn">
-        <button class="cross-btn" type="submit" onclick=crossButtonPressed(${variantId},${thresholdTdValue});>
+        <button class="cross-btn" style='border:none;color:#212529;' type="submit" onclick=crossButtonPressed(${variantId},${thresholdTdValue});>
             <i class="fa fa-times"></i>
         </button>
       </span>

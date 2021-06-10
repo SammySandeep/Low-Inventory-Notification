@@ -39,7 +39,7 @@
           <tr>
             <td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>
             <td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>
-            <td> <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>
+            <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>
           </tr>
         <%end%>
       </tbody>
@@ -72,8 +72,8 @@
               <td><%= email.email %></td>
               <input type="hidden" id=<%=@shop_setting.id%>>
               <td><%= email.is_active %></td>
-              <td> <i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=email.id%> style="font-size:20px;" onclick="editclick(this);"></i></td>
-              <td><i class="fa fa-times" aria-hidden="true" data-email_id_delete=<%=email.id%> style="font-size:20px; color:red;" onclick="deleteclick(this);"></i></td> 
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=email.id%> style="font-size:20px;" onclick="editclick(this);"></i></td>
+              <td><i class="fa fa-times" aria-hidden="true" data-email_id_delete=<%=email.id%> style="font-size:20px;margin-top: 10px;color:red;" onclick="deleteclick(this);"></i></td> 
               <input type="hidden" id=<%=@shop_setting.id%>>
             </tr>
           <% end %>

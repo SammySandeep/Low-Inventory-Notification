@@ -61,9 +61,9 @@ var editIconTdEle = table.rows[1].cells[2];
         return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
     });
     
-    $(editIconTdEle).find('i').replaceWith(function () {
-        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>`;
-    });
+    $(editIconTdEle).replaceWith(function () {
+        return ` <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></tr>`;
+    });  
 
     <%if @email.present?%>
 

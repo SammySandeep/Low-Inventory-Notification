@@ -119,12 +119,12 @@ function editclick(editiconElem){
     }
 
     function updateIconPressedEmail(shopSettingIDEmail,emailId) {
-        var updateiconElem = $('[data-email_id*= '+emailId+']');
-        var prevTdElem = $(updateiconElem).closest('td'); 
-        var updatedisactiveTd = $(prevTdElem).prev();
-        var isactivechkbox = updatedisactiveTd.find('input[type="checkbox"]');
+        var updateIconElem = $('[data-email_id*= '+emailId+']');
+        var prevTdElem = $(updateIconElem).closest('td'); 
+        var updatedIsActiveTd = $(prevTdElem).prev();
+        var isactivechkbox = updatedIsActiveTd.find('input[type="checkbox"]');
         var updatedisactivevalue = $(isactivechkbox).prop('checked');
-        var hiddenfield = $(updatedisactiveTd).prev();
+        var hiddenfield = $(updatedIsActiveTd).prev();
         var updatedemailTd = $(hiddenfield).prev();
         var emailinputElem = updatedemailTd.find('input[type="email"]');
         var emailUpdatedValue = $(emailinputElem).val();

@@ -26,8 +26,8 @@ function editIconclicked(editElement){
         <button class="cross-btn" style='border:none;color:#212529;' type="submit" onclick=crossButtonPressed(${variantId},${thresholdTdValue});>
             <i class="fa fa-times"></i>
         </button>
-      </span>
-    </div> `
+        </span>
+        </div> `
     });
 
     $(editElement).replaceWith(function(){

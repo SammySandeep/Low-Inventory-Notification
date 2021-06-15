@@ -14,9 +14,6 @@ class VariantsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def export_csv
     ExportCsvJob.perform_later(shop_id: current_shop.id)
     respond_to do |format|

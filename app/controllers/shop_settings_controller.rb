@@ -21,20 +21,15 @@ class ShopSettingsController < ApplicationController
     @emails = @shop_setting.emails
   end
 
-  def edit
-
-  end
-
   def create
     @shop_setting = ShopSetting.new(shop_setting_params)
     @shop_setting.shop_id = current_shop.id
     respond_to do |format|
       if @shop_setting.save
-        format.html { redirect_to shop_settings_path, notice: 'Shop setting was successfully created.' }
-        format.json { render :show, status: :created, location: @shop_setting }
+        format.js
+        format.html { redirect_to shop_settings_path }
       else
-        format.html { render :new }
-        format.json { render json: @shop_setting.errors, status: :unprocessable_entity }
+        format.html { render action: "new" }
       end
     end
   end

@@ -1,5 +1,5 @@
-var globalthreshold = document.getElementById(<%=@shop_setting.id%>);
-var globalthresholdTd = $(globalthreshold).closest('td');
+var globalThreshold = document.getElementById(<%=@shop_setting.id%>);
+var globalthresholdTd = $(globalThreshold).closest('td');
 var alertFrequency = document.getElementById(<%=(@shop_setting.shop_id)+5%>);
 var alertFrequencyTd = $(alertFrequency).closest('td');
 var table = document.getElementById('configuration-table');
@@ -8,9 +8,9 @@ var editIconTdEle = table.rows[1].cells[2];
 <%if @email.present?%>
     var updateiconElem = $('[data-email_id*= '+<%=@email_id%>+']');
     var prevTdElem = $(updateiconElem).closest('td'); 
-    var updatedisactiveTd = $(prevTdElem).prev();
-    var hiddenfield = $(updatedisactiveTd).prev();
-    var updatedemailTd = $(hiddenfield).prev();
+    var updatedIsActiveTd = $(prevTdElem).prev();
+    var hiddenField = $(updatedIsActiveTd).prev();
+    var updatedemailTd = $(hiddenField).prev();
 <%end%>
 
 <% if @shop_setting.errors.present? %>
@@ -37,7 +37,7 @@ var editIconTdEle = table.rows[1].cells[2];
             return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
         });
 
-        $(updatedisactiveTd).replaceWith(function () {
+        $(updatedIsActiveTd).replaceWith(function () {
             return `<td><%=@is_active %></td>`;
         });
      
@@ -71,7 +71,7 @@ var editIconTdEle = table.rows[1].cells[2];
             return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
         });
 
-        $(updatedisactiveTd).replaceWith(function () {
+        $(updatedIsActiveTd).replaceWith(function () {
             return `<td><%=@is_active %></td>`;
         });
 

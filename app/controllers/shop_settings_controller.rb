@@ -17,16 +17,11 @@ class ShopSettingsController < ApplicationController
     @shop_setting = ShopSetting.new
   end
 
-  def show
-    @emails = @shop_setting.emails
-  end
-
   def create
     @shop_setting = ShopSetting.new(shop_setting_params)
     @shop_setting.shop_id = current_shop.id
     respond_to do |format|
       if @shop_setting.save
-        format.js
         format.html { redirect_to shop_settings_path }
       else
         format.html { render action: "new" }

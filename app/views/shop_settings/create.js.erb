@@ -1,9 +1,0 @@
-<% if @shop_setting.errors.present? %>
-    var divElementforConfigurationError = document.getElementById("configuration-error");
-    divElementforConfigurationError.className = "show";
-    setTimeout(function(){ divElementforConfigurationError.className = divElementforConfigurationError.className.replace("show", ""); }, 3000);
-<% else %>
-    var divElementforConfigurationSuccess = document.getElementById("configuration-error");
-    divElementforConfigurationSuccess.className = "show";
-    setTimeout(function(){ divElementforConfigurationSuccess.className = divElementforConfigurationSuccess.className.replace("show", ""); }, 3000);
-<% end %>

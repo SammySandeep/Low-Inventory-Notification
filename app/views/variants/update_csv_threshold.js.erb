@@ -1,10 +1,12 @@
 $('#modal-window').modal('hide');
 <% if @import_csv_successful %>
-    var divElementForImportCsvSuccess = document.getElementById("import-csv-success");
+    var divElementForImportCsvSuccess = document.getElementById("snackbar-success");
+    divElementForImportCsvSuccess.innerHTML = "Variants Treshold successfully updated!";
     divElementForImportCsvSuccess.className = "show";
     setTimeout(function(){ divElementForImportCsvSuccess.className = divElementForImportCsvSuccess.className.replace("show", ""); }, 3000);
 <% else %>
-     var divElementforImportCsvError = document.getElementById("import-csv-error");
+    var divElementforImportCsvError = document.getElementById("snackbar-error");
+    divElementforImportCsvError.innerHTML = "There was an error updating Variants Treshold. Please refer to the csv file format on the Home page.";
     divElementforImportCsvError.className = "show";
     setTimeout(function(){ divElementforImportCsvError.className = divElementforImportCsvError.className.replace("show", ""); }, 3000);
 <% end %>

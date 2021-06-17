@@ -5,7 +5,7 @@ var alertFrequencyTd = $(alertFrequency).closest('td');
 var table = document.getElementById('configuration-table');
 var editIconTdEle = table.rows[1].cells[2];
 
-<%if @email.present?%>
+<%if @email_params.present?%>
     var updateiconElem = $('[data-email_id*= '+<%=@email_id%>+']');
     var prevTdElem = $(updateiconElem).closest('td'); 
     var updatedIsActiveTd = $(prevTdElem).prev();
@@ -16,22 +16,23 @@ var editIconTdEle = table.rows[1].cells[2];
 <% if @shop_setting.errors.present? %>
 
     var divElementforError = document.getElementById("snackbar-error");
+    divElementforError.innerHTML = "Something went wrong.Please enter proper values and try again!";
     divElementforError.className = "show";
     setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     
     $(globalthresholdTd).replaceWith(function () {
-        return `<td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>`;
+        return `<td id=<%=@shop_setting.id%>><%= @global_threshold %></td>`;
     });
 
     $(alertFrequencyTd).replaceWith(function () {
         return ` <td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
     });
     
-    $(editIconTdEle).find('i').replaceWith(function () {
-        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>`;
+    $(editIconTdEle).replaceWith(function () {
+        return `<td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>`;
     });
 
-    <%if @email.present?%>
+    <%if @email_params.present?%>
 
         $(updateiconElem).replaceWith(function () {
             return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
@@ -40,16 +41,23 @@ var editIconTdEle = table.rows[1].cells[2];
         $(updatedIsActiveTd).replaceWith(function () {
             return `<td><%=@is_active %></td>`;
         });
-     
-        $(updatedemailTd).replaceWith(function () {
+
+        <% if @email.present? %>
+            $(updatedemailTd).replaceWith(function () {
             return ` <td><%=@email%></td>`;
         });
+        <% else %>    
+            $(updatedemailTd).replaceWith(function () {
+            return ` <td><%=@email_id_to_update_for_error%></td>`;
+        });
+        <% end %>
 
     <%end%>
 
 <% else %>
 
     var divElementforsuccess = document.getElementById("snackbar-success");
+    divElementforsuccess.innerHTML = "Record successfully updated!";
     divElementforsuccess.className = "show";
     setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
     
@@ -62,10 +70,10 @@ var editIconTdEle = table.rows[1].cells[2];
     });
     
     $(editIconTdEle).replaceWith(function () {
-        return ` <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></tr>`;
+        return ` <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>`;
     });  
 
-    <%if @email.present?%>
+    <%if @email_params.present?%>
 
         $(updateiconElem).replaceWith(function () {
             return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
@@ -74,10 +82,15 @@ var editIconTdEle = table.rows[1].cells[2];
         $(updatedIsActiveTd).replaceWith(function () {
             return `<td><%=@is_active %></td>`;
         });
-
-        $(updatedemailTd).replaceWith(function () {
+        <% if @email.present? %>
+            $(updatedemailTd).replaceWith(function () {
             return ` <td><%=@email%></td>`;
         });
+        <% else %>    
+            $(updatedemailTd).replaceWith(function () {
+            return ` <td><%=@email_id_to_update_for_error%></td>`;
+        });
+        <% end %>
 
     <% end %>
     

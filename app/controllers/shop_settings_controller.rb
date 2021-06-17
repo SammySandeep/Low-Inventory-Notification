@@ -30,12 +30,16 @@ class ShopSettingsController < ApplicationController
   end
 
   def update
-    @shop_setting.update(shop_setting_params)
+    @global_threshold = @shop_setting.global_threshold
+    @email_params = shop_setting_params[:emails_attributes]
     if shop_setting_params[:emails_attributes].present?
+      @email_to_update = Email.find(shop_setting_params[:emails_attributes][:id])
+      @email_id_to_update_for_error = @email_to_update.email
       @email_id = shop_setting_params[:emails_attributes][:id]
       @email = shop_setting_params[:emails_attributes][:email]
       @is_active = shop_setting_params[:emails_attributes][:is_active]
     end
+    @shop_setting.update!(shop_setting_params)
     respond_to do |format|
       format.js
     end

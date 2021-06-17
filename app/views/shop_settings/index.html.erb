@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>
 <%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
+<%= stylesheet_link_tag "application", "toast_notification_style.css" ,:media => "all" %>  
 <div class="container text-center" style="margin-bottom:20">
   <p id="notice" style="color:green;text-align:left;"><%= notice %></p>
 
@@ -7,22 +8,8 @@
     <h3><b><center>Configuration</center></b></h3>
   </div>
   <div id="snackbar-error">
-        Something went wrong.Please enter proper values and try again!
   </div>
   <div id="snackbar-success">
-        Record successfully updated!
-  </div>
-  <div id="snackbar-error-email">
-        Something went wrong.Please enter valid email address!
-  </div>
-  <div id="snackbar-success-email">
-        Email created successfully!
-  </div>
-  <div id="snackbar-error-email-delete">
-        Something went wrong.Please try again later!
-  </div>
-  <div id="snackbar-success-email-delete">
-        Email deleted successfully!
   </div>
   <div class="table-responsive">
     <table id ="configuration-table" class="table table-bordered table-striped">

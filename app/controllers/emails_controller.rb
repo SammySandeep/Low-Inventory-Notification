@@ -12,6 +12,8 @@ class EmailsController < ApplicationController
 
     def create
         @email = Email.new(email_create_params)
+        @email_create_success_message = "Email created successfully!"
+        @email_create_error_message = "Something went wrong.Please enter valid email address!"
         if @email.save
             respond_to do |format|
                 format.html
@@ -21,6 +23,8 @@ class EmailsController < ApplicationController
     end
 
     def destroy
+        @email_delete_success_message = "Email deleted successfully!"
+        @email_delete_error_message = "Something went wrong.Please try again later!"
         if @email.shop_setting_id == (params[:emails_attributes][:shop_setting_id]).to_i
             respond_to do |format|
                 format.html

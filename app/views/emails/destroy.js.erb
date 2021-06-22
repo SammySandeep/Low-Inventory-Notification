@@ -1,7 +1,7 @@
  <%if @email.destroy%>   
 
     var divElementforsuccessEmaildelete = document.getElementById("snackbar-success");
-    divElementforsuccessEmaildelete.innerHTML = "Email deleted successfully!";
+    divElementforsuccessEmaildelete.innerHTML = "<%=@email_delete_success_message %>";
     divElementforsuccessEmaildelete.className = "show";
     setTimeout(function(){ divElementforsuccessEmaildelete.className = divElementforsuccessEmaildelete.className.replace("show", ""); }, 3000);
     window.location.replace("<%= shop_settings_path %>");
@@ -9,7 +9,7 @@
 <%else%>
 
     var divElementforerrorEmaildelete = document.getElementById("snackbar-error");
-    divElementforerrorEmaildelete.innerHTML = "Something went wrong.Please try again later!";
+    divElementforerrorEmaildelete.innerHTML = "<%=@email_delete_error_message %>";
     divElementforerrorEmaildelete.className = "show";
     setTimeout(function(){ divElementforerrorEmaildelete.className = divElementforerrorEmaildelete.className.replace("show", ""); }, 3000);
     window.location.replace("<%= shop_settings_path %>");

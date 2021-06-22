@@ -1,6 +1,6 @@
 <% if @variant.errors.present? %>
     var divElementforError = document.getElementById("snackbar-error");
-    divElementforError.innerHTML = "Please enter a valid integer value to update!";
+    divElementforError.innerHTML = "<%=@update_threshold_error_message %>";
     divElementforError.className = "show";
     setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     var thresholdTr = document.getElementById(<%=@variant.id%>);
@@ -15,7 +15,7 @@
 <% else %>
 
     var divElementforsuccess = document.getElementById("snackbar-success");
-    divElementforsuccess.innerHTML = "Threshold successfully updated!";
+    divElementforsuccess.innerHTML = "<%=@update_threshold_success_message %>";
     divElementforsuccess.className = "show";
     setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
     var thresholdTr = document.getElementById(<%=@variant.id%>);

@@ -1,55 +1,63 @@
-var globalthreshold = document.getElementById(<%=@shop_setting.id%>);
-var globalthresholdTd = $(globalthreshold).closest('td');
+var globalThreshold = document.getElementById(<%=@shop_setting.id%>);
+var globalthresholdTd = $(globalThreshold).closest('td');
 var alertFrequency = document.getElementById(<%=(@shop_setting.shop_id)+5%>);
 var alertFrequencyTd = $(alertFrequency).closest('td');
 var table = document.getElementById('configuration-table');
 var editIconTdEle = table.rows[1].cells[2];
 
-<%if @email.present?%>
+<%if @email_params.present?%>
     var updateiconElem = $('[data-email_id*= '+<%=@email_id%>+']');
     var prevTdElem = $(updateiconElem).closest('td'); 
-    var updatedisactiveTd = $(prevTdElem).prev();
-    var hiddenfield = $(updatedisactiveTd).prev();
-    var updatedemailTd = $(hiddenfield).prev();
+    var updatedIsActiveTd = $(prevTdElem).prev();
+    var hiddenField = $(updatedIsActiveTd).prev();
+    var updatedemailTd = $(hiddenField).prev();
 <%end%>
 
 <% if @shop_setting.errors.present? %>
 
     var divElementforError = document.getElementById("snackbar-error");
+    divElementforError.innerHTML = "<%= shop_setting_update_error_message %>"
     divElementforError.className = "show";
     setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     
     $(globalthresholdTd).replaceWith(function () {
-        return `<td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>`;
+        return `<td id=<%=@shop_setting.id%>><%= @global_threshold %></td>`;
     });
 
     $(alertFrequencyTd).replaceWith(function () {
         return ` <td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
     });
     
-    $(editIconTdEle).find('i').replaceWith(function () {
-        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>`;
+    $(editIconTdEle).replaceWith(function () {
+        return `<td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>`;
     });
 
-    <%if @email.present?%>
+    <%if @email_params.present?%>
 
         $(updateiconElem).replaceWith(function () {
             return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
         });
 
-        $(updatedisactiveTd).replaceWith(function () {
+        $(updatedIsActiveTd).replaceWith(function () {
             return `<td><%=@is_active %></td>`;
         });
-     
-        $(updatedemailTd).replaceWith(function () {
+
+        <% if @email.present? %>
+            $(updatedemailTd).replaceWith(function () {
             return ` <td><%=@email%></td>`;
         });
+        <% else %>    
+            $(updatedemailTd).replaceWith(function () {
+            return ` <td><%=@email_id_to_update_for_error%></td>`;
+        });
+        <% end %>
 
     <%end%>
 
 <% else %>
 
     var divElementforsuccess = document.getElementById("snackbar-success");
+    divElementforsuccess.innerHTML = "<%= shop_setting_update_success_message %>"
     divElementforsuccess.className = "show";
     setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
     
@@ -61,23 +69,28 @@ var editIconTdEle = table.rows[1].cells[2];
         return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
     });
     
-    $(editIconTdEle).find('i').replaceWith(function () {
-        return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i>`;
-    });
+    $(editIconTdEle).replaceWith(function () {
+        return ` <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>`;
+    });  
 
-    <%if @email.present?%>
+    <%if @email_params.present?%>
 
         $(updateiconElem).replaceWith(function () {
             return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
         });
 
-        $(updatedisactiveTd).replaceWith(function () {
+        $(updatedIsActiveTd).replaceWith(function () {
             return `<td><%=@is_active %></td>`;
         });
-
-        $(updatedemailTd).replaceWith(function () {
+        <% if @email.present? %>
+            $(updatedemailTd).replaceWith(function () {
             return ` <td><%=@email%></td>`;
         });
+        <% else %>    
+            $(updatedemailTd).replaceWith(function () {
+            return ` <td><%=@email_id_to_update_for_error%></td>`;
+        });
+        <% end %>
 
     <% end %>
     

@@ -22,7 +22,7 @@
     <div class="form-group">
         <label>Alert Frequency:</label>
         <br>
-        <%= form.select :alert_frequency, [1,6,12,24] ,{},{:class => "form-control"} %>
+        <%= form.select :alert_frequency, [["1 min", 1],["6 hrs", 6],["12 hrs", 12],["24 hrs",24]] ,{},{:class => "form-control"} %>
     </div>
     <br>
    <div class="form-actions">

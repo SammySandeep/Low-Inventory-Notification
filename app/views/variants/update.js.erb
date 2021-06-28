@@ -1,27 +1,29 @@
 <% if @variant.errors.present? %>
     var divElementforError = document.getElementById("snackbar-error");
+    divElementforError.innerHTML = "<%= update_threshold_error_message %>"
     divElementforError.className = "show";
     setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     var thresholdTr = document.getElementById(<%=@variant.id%>);
-    var thresholdinputElem = $(thresholdTr).find('input');
-    $(thresholdinputElem).replaceWith(function () {
-        return `<td class="variant-threshold-text" onclick="updateIconPressed(this);"><%= @variant.threshold %></td>`;
+    var thresholdInputElem = $(thresholdTr).find('div');
+    $(thresholdInputElem).replaceWith(function () {
+        return `<td class="variant-threshold-text" onclick="updateIconPressed(this);"><%= @current_variant_threshold %></td>`;
     });
-   $(thresholdTr).find('i').replaceWith(function () {
+    $(thresholdTr).find('i').replaceWith(function () {
         return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>`;
     });
  
 <% else %>
 
     var divElementforsuccess = document.getElementById("snackbar-success");
+    divElementforsuccess.innerHTML = "<%= update_threshold_success_message %>"
     divElementforsuccess.className = "show";
     setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
     var thresholdTr = document.getElementById(<%=@variant.id%>);
-    var thresholdinputElem = $(thresholdTr).find('input');
-    $(thresholdinputElem).replaceWith(function () {
+    var thresholdInputElem = $(thresholdTr).find('div');
+    $(thresholdInputElem).replaceWith(function () {
         return `<td class="variant-threshold-text" onclick="updateIconPressed(this);"><%= @variant.threshold %></td>`;
     });
-   $(thresholdTr).find('i').replaceWith(function () {
+    $(thresholdTr).find('i').replaceWith(function () {
         return `<i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editIconclicked(this);"></i>`;
     });
     

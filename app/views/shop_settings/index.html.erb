@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>
 <%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
+<%= stylesheet_link_tag "application", "toast_notification_style.css" ,:media => "all" %>  
 <div class="container text-center" style="margin-bottom:20">
   <p id="notice" style="color:green;text-align:left;"><%= notice %></p>
 
@@ -7,22 +8,8 @@
     <h3><b><center>Configuration</center></b></h3>
   </div>
   <div id="snackbar-error">
-        Something went wrong.Please enter proper values and try again!
   </div>
   <div id="snackbar-success">
-        Record successfully updated!
-  </div>
-  <div id="snackbar-error-email">
-        Something went wrong.Please enter valid email address!
-  </div>
-  <div id="snackbar-success-email">
-        Email created successfully!
-  </div>
-  <div id="snackbar-error-email-delete">
-        Something went wrong.Please try again later!
-  </div>
-  <div id="snackbar-success-email-delete">
-        Email deleted successfully!
   </div>
   <div class="table-responsive">
     <table id ="configuration-table" class="table table-bordered table-striped">
@@ -39,7 +26,7 @@
           <tr>
             <td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>
             <td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>
-            <td> <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>
+            <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>
           </tr>
         <%end%>
       </tbody>
@@ -72,8 +59,8 @@
               <td><%= email.email %></td>
               <input type="hidden" id=<%=@shop_setting.id%>>
               <td><%= email.is_active %></td>
-              <td> <i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=email.id%> style="font-size:20px;" onclick="editclick(this);"></i></td>
-              <td><i class="fa fa-times" aria-hidden="true" data-email_id_delete=<%=email.id%> style="font-size:20px; color:red;" onclick="deleteclick(this);"></i></td> 
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=email.id%> style="font-size:20px;" onclick="editclick(this);"></i></td>
+              <td><i class="fa fa-times" aria-hidden="true" data-email_id_delete=<%=email.id%> style="font-size:20px;margin-top: 10px;color:red;" onclick="deleteclick(this);"></i></td> 
               <input type="hidden" id=<%=@shop_setting.id%>>
             </tr>
           <% end %>

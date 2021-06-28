@@ -1,5 +1,5 @@
 var divElementforExportCsv = document.getElementById("snackbar-success");
-divElementforExportCsv.innerHTML = "<%=@export_csv_success_message %>";
+divElementforExportCsv.innerHTML = "<%= export_csv_success_message %>"
 divElementforExportCsv.className = "show";
 setTimeout(function(){ divElementforExportCsv.className = divElementforExportCsv.className.replace("show", ""); }, 3000);
     

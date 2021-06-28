@@ -1,12 +1,12 @@
 $('#modal-window').modal('hide');
 <% if @import_csv_successful %>
     var divElementForImportCsvSuccess = document.getElementById("snackbar-success");
-    divElementForImportCsvSuccess.innerHTML = "<%=@import_csv_success_message %>";
+    divElementForImportCsvSuccess.innerHTML = "<%= import_csv_success_message %>"
     divElementForImportCsvSuccess.className = "show";
     setTimeout(function(){ divElementForImportCsvSuccess.className = divElementForImportCsvSuccess.className.replace("show", ""); }, 3000);
 <% else %>
     var divElementforImportCsvError = document.getElementById("snackbar-error");
-    divElementforImportCsvError.innerHTML = "<%=@import_csv_error_message %>";
+    divElementforImportCsvError.innerHTML = "<%= import_csv_error_message %>"
     divElementforImportCsvError.className = "show";
     setTimeout(function(){ divElementforImportCsvError.className = divElementforImportCsvError.className.replace("show", ""); }, 3000);
 <% end %>

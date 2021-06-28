@@ -16,7 +16,7 @@ var editIconTdEle = table.rows[1].cells[2];
 <% if @shop_setting.errors.present? %>
 
     var divElementforError = document.getElementById("snackbar-error");
-    divElementforError.innerHTML = "<%=shop_setting_update_error_message %>";
+    divElementforError.innerHTML = "<%= shop_setting_update_error_message %>"
     divElementforError.className = "show";
     setTimeout(function(){ divElementforError.className = divElementforError.className.replace("show", ""); }, 3000);
     
@@ -57,7 +57,7 @@ var editIconTdEle = table.rows[1].cells[2];
 <% else %>
 
     var divElementforsuccess = document.getElementById("snackbar-success");
-    divElementforsuccess.innerHTML = "<%=@shop_setting_update_success_message %>";
+    divElementforsuccess.innerHTML = "<%= shop_setting_update_success_message %>"
     divElementforsuccess.className = "show";
     setTimeout(function(){ divElementforsuccess.className = divElementforsuccess.className.replace("show", ""); }, 3000);
     

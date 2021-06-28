@@ -17,37 +17,33 @@ class ShopSettingsController < ApplicationController
     @shop_setting = ShopSetting.new
   end
 
-  def show
-    @emails = @shop_setting.emails
-  end
-
-  def edit
-
-  end
-
   def create
     @shop_setting = ShopSetting.new(shop_setting_params)
     @shop_setting.shop_id = current_shop.id
     respond_to do |format|
       if @shop_setting.save
-        format.html { redirect_to shop_settings_path, notice: 'Shop setting was successfully created.' }
-        format.json { render :show, status: :created, location: @shop_setting }
+        format.html { redirect_to shop_settings_path }
       else
-        format.html { render :new }
-        format.json { render json: @shop_setting.errors, status: :unprocessable_entity }
+        format.html { render action: "new" }
       end
     end
   end
 
   def update
-    @shop_setting.update(shop_setting_params)
+    @global_threshold = @shop_setting.global_threshold
+    @email_params = shop_setting_params[:emails_attributes]
+    shop_setting_update_error_message = "Something went wrong.Please enter proper values and try again!"
+    shop_setting_update_success_message = "Record successfully updated!"
     if shop_setting_params[:emails_attributes].present?
+      @email_to_update = Email.find(shop_setting_params[:emails_attributes][:id])
+      @email_id_to_update_for_error = @email_to_update.email
       @email_id = shop_setting_params[:emails_attributes][:id]
       @email = shop_setting_params[:emails_attributes][:email]
       @is_active = shop_setting_params[:emails_attributes][:is_active]
     end
+    @shop_setting.update!(shop_setting_params)
     respond_to do |format|
-      format.js
+      format.js { render "update.js.erb", :locals => {:shop_setting_update_error_message => shop_setting_update_error_message, :shop_setting_update_success_message => shop_setting_update_success_message} }
     end
   end
 

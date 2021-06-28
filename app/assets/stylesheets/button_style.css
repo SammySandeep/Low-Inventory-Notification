@@ -2,7 +2,11 @@
   background-color: #2D2B75;
   color: white;
 }
-
+.cross-btn{
+  color: red;
+  margin-top: 10px;
+  margin-left: 5px;
+}
 .editbtn,.editbtn:hover,.editbtn:focus,.editbtn:active {
   background-color: #2D2B75;
   color: white;

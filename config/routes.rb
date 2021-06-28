@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   
   post '/shopify/app/uninstalled', to: 'shopify/apps#uninstalled'
 
-  resources :variants
-  resources :shop_settings, :except => [:show]
+  resources :variants, :except => [:show, :edit]
+  resources :shop_settings, :except => [:show, :edit]
   resources :emails, :except => [:show, :index, :edit, :update]
 
   root :to => 'home#index'

@@ -32,8 +32,8 @@ class ShopSettingsController < ApplicationController
   def update
     @global_threshold = @shop_setting.global_threshold
     @email_params = shop_setting_params[:emails_attributes]
-    shop_setting_update_error_message = "Something went wrong.Please enter proper values and try again!"
-    shop_setting_update_success_message = "Record successfully updated!"
+    @shop_setting_update_error_message = "Something went wrong.Please enter proper values and try again!"
+    @shop_setting_update_success_message = "Record successfully updated!"
     if shop_setting_params[:emails_attributes].present?
       @email_to_update = Email.find(shop_setting_params[:emails_attributes][:id])
       @email_id_to_update_for_error = @email_to_update.email
@@ -43,7 +43,7 @@ class ShopSettingsController < ApplicationController
     end
     @shop_setting.update!(shop_setting_params)
     respond_to do |format|
-      format.js { render "update.js.erb", :locals => {:shop_setting_update_error_message => shop_setting_update_error_message, :shop_setting_update_success_message => shop_setting_update_success_message} }
+      format.js
     end
   end
 

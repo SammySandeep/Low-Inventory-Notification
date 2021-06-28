@@ -1,14 +1,14 @@
 <% if @email.errors.present? %>
 
     var divElementforErrorEmail = document.getElementById("snackbar-error");
-    divElementforErrorEmail.innerHTML = "<%= email_create_error_message %>"
+    divElementforErrorEmail.innerHTML = "<%=@email_create_error_message %>";
     divElementforErrorEmail.className = "show";
     setTimeout(function(){ divElementforErrorEmail.className = divElementforErrorEmail.className.replace("show", ""); }, 5000);
 
 <% else %>
 
     var divElementforsuccessEmail = document.getElementById("snackbar-success");
-    divElementforsuccessEmail.innerHTML = "<%= email_create_success_message %>"
+    divElementforsuccessEmail.innerHTML = "<%=@email_create_success_message %>";
     divElementforsuccessEmail.className = "show";
     setTimeout(function(){ divElementforsuccessEmail.className = divElementforsuccessEmail.className.replace("show", ""); }, 5000);
 

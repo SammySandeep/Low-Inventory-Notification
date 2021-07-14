@@ -10,16 +10,19 @@
         <div class="top-bar navbar-default" oncontextmenu="return false;">
             <div class="container" oncontextmenu="return false;">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <a class="navbar-brand" href=<%=root_path%>><img src="https://s3.ap-south-1.amazonaws.com/referral-image-logo/logo.png" alt="" /></a>
+                    </div>
+                    <div class="col-sm-4">
                         <ul class="list-inline">
-                            <li><i class="fa fa-envelope-o" style="font-size:11px;"></i> <a href="mailto:abhisarika.das@kloctechnologies.com(opens in new tab)?Subject=low-inventory-notification-app" target="_top">apps@kloctechnologies.com</a></li>
+                            <li><i class="fa fa-envelope-o"></i> <a href="mailto:abhisarika.das@kloctechnologies.com(opens in new tab)?Subject=low-inventory-notification-app" target="_top"> shopifyexpert@kloctechnologies.com </a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-6 text-right">
+                   <div class="col-sm-4 text-right">
                         <ul class="list-inline list-inline1">
-                            <li><a href="https://twitter.com/klocsutra" target="_blank"><i class="fa fa-twitter" style="font-size:17px;color:white"></i></a></li> &nbsp&nbsp
-                            <li><a href="https://www.facebook.com/newklocsutra" target="_blank"><i class="fa fa-facebook" style="font-size:17px;color:white"></i></a></li> &nbsp&nbsp
-                            <li><a href="https://www.instagram.com/klocsutra/" target="_blank"><i class="fa fa-instagram" style="font-size:17px;color:white"></i></a></li> &nbsp&nbsp
+                            <li><a href="https://twitter.com/klocsutra" target="_blank"><i class="fa fa-twitter"></i></a></li> &nbsp&nbsp
+                            <li><a href="https://www.facebook.com/newklocsutra" target="_blank"><i class="fa fa-facebook" ></i></a></li> &nbsp&nbsp
+                            <li><a href="https://www.instagram.com/klocsutra/" target="_blank"><i class="fa fa-instagram"></i></a></li> &nbsp&nbsp
                         </ul> 
                     </div>
                 </div>
@@ -27,11 +30,9 @@
         </div>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href=<%=root_path%>><img src="https://s3.ap-south-1.amazonaws.com/referral-image-logo/logo.png" alt="" /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-  
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-right">
                     <li class="nav-item mr-2">
@@ -40,13 +41,13 @@
                     <li class="nav-item">
                         <%= link_to "Products",variants_path,:class => "nav-link"  %> 
                     </li>
-                     <li class="nav-item mr-2">
+                     <li class="nav-item">
                         <%= link_to "Reports",reports_index_path, :class => "nav-link"  %> 
                     </li>
                     <li class="nav-item">
                         <%= link_to "Configuration",shop_settings_path,:class => "nav-link"  %> 
                     </li>
-                    <li class="nav-item mr-2">
+                    <li class="nav-item">
                         <%= link_to "Help",help_index_path, :class => "nav-link"  %> 
                     </li>
                 </ul>

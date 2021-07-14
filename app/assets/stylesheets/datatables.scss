@@ -1,3 +1,7 @@
+.page-item.active .page-link {
+    background-color: #2D2B75;
+    border-color: #2D2B75 ;
+} 
 @import 'datatables/dataTables.bootstrap4';
 @import 'datatables/extensions/Responsive/responsive.bootstrap4';
 @import 'datatables/extensions/Buttons/buttons.bootstrap4';

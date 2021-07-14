@@ -1,12 +1,17 @@
 <%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %>
 <%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
 <%= stylesheet_link_tag "application", "toast_notification_style.css" ,:media => "all" %>  
+<%= stylesheet_link_tag "application", "header_style.css" ,:media => "all" %> 
 <div class="container text-center" style="margin-bottom:20">
   <p id="notice" style="color:green;text-align:left;"><%= notice %></p>
-
-  <div class="container text-center">
-    <h3><b><center>Configuration</center></b></h3>
+  <div class="container header-style">
+    <div class="row">
+      <div class="col">
+        <h4><b>CONFIGURATION</b></h4>
+      </div>
+    </div>
   </div>
+  <br>
   <div id="snackbar-error">
   </div>
   <div id="snackbar-success">
@@ -34,8 +39,17 @@
   </div>
 
   <br>
-  <h3><b>Emails</b></h3>
-  <%= link_to 'Add Email', new_email_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn editbtn'}  %>
+  <div class="container header-style">
+    <div class="row">
+      <div class="col">
+        <h4><b>Emails</b></h4>
+      </div>
+      <div class="col">
+        <%= link_to 'Add Email', new_email_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn editbtn'}  %>
+      </div>
+    </div>
+  </div>
+  <br>
   <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content"></div>
@@ -45,8 +59,8 @@
     <table id="emails-table" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <td>Email</td>
-          <td>Is Active</td>
+          <th>Email</th>
+          <th>Is Active</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>

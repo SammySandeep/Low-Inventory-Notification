@@ -30,6 +30,11 @@
   background-color: #2D2B75;
   color: white;
   float: right;
+  border: 2px solid white;
+}
+a.btn.editbtn{
+  text-decoration: underline;
+  margin-top: 2px;
 }
 .edit_btn,.edit_btn:hover,.edit_btn:focus,.edit_btn:active{
   background-color: #2D2B75;
@@ -69,13 +74,25 @@
 .export-csv-btn,.export-csv-btn:hover,.export-csv-btn:focus,.export-csv-btn:active{
   color: #fff;
   background: #2e2c75;
-  border-color: #2e2c75;
+  border: 2px solid white;
+  float: right;
+  margin-top: 2px;
 }
 
 .import-csv-btn,.import-csv-btn:hover,.import-csv-btn:focus,.import-csv-btn:active{
   color: #fff;
   background: #2e2c75;
-  border-color: #2e2c75;
+  border: 2px solid white; 
+  float: right;
+  margin-top: 2px;
+}
+
+a.btn.import-csv-btn{
+  text-decoration: underline;
+  margin-right: 5px;
+}
+a.btn.export-csv-btn{
+  text-decoration: underline;
 }
 
 .add_email_btn,.add_email_btn:hover,.add_email_btn:focus,.add_email_btn:active{

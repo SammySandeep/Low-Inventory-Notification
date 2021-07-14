@@ -75,8 +75,8 @@ var editIconTdEle = table.rows[1].cells[2];
 
     <%if @email_params.present?%>
 
-        $(updateiconElem).replaceWith(function () {
-            return `<i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i>`;
+        $(prevTdElem).replaceWith(function () {
+            return `<td><i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=<%=@email_id%> style="font-size:20px;" onclick="editclick(this);"></i></td>`;
         });
 
         $(updatedIsActiveTd).replaceWith(function () {

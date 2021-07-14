@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 function editclicked(editElement){
     var configurationTable = document.getElementById('configuration-table');
     var firstCol = configurationTable.rows[1].cells[0];
@@ -114,8 +118,31 @@ function editclick(editiconElem){
     }
 
     $(editiconElem).replaceWith(function(){
-        return `<i class="fa fa-check" aria-hidden="true"; data-email_id=${emailId} style="margin-top:15px;"  onclick=updateIconPressedEmail(${shopSettingIDEmail},${emailId});></i>`;
+        return `<i class="fa fa-check" aria-hidden="true"; data-email_id=${emailId} style="margin-top:15px;"  onclick=updateIconPressedEmail(${shopSettingIDEmail},${emailId});></i>
+        <i class="fa fa-times" style='font-size:20px;color:#212529;' onclick=crossiconclicked(${emailId},${isactiveValue});></i>`;
     });
+    }
+
+    function crossiconclicked(emailId,isactiveValue){
+        var updateiconElem = $('[data-email_id*= '+emailId+']');
+        var prevTdElem = $(updateiconElem).closest('td'); 
+        var updatedIsActiveTd = $(prevTdElem).prev();
+        var hiddenField = $(updatedIsActiveTd).prev();
+        var updatedemailTd = $(hiddenField).prev();
+        var e = updatedemailTd.find('input[type="email"]');
+        var emailUpdatedValue = $(e).val();
+        $(prevTdElem).replaceWith(function () {
+            return `<td><i class="fa fa-pencil-square-o" aria-hidden="true" data-email_id=${emailId} style="font-size:20px;" onclick="editclick(this);"></i></td>`;
+        });
+
+        $(updatedIsActiveTd).replaceWith(function () {
+            return `<td>${isactiveValue}</td>`;
+        });
+
+        $(updatedemailTd).replaceWith(function () {
+            return `<td>${emailUpdatedValue}</td>`;
+        });
+       
     }
 
     function updateIconPressedEmail(shopSettingIDEmail,emailId) {

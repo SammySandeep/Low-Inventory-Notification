@@ -7,11 +7,21 @@
 }
 .top-bar.navbar-default {
     padding: 10px 0;
-    background: #2d2b75;
-    color: #fff;
+    /* background: #2d2b75; */
+    color: #000000;
 }
 .top-bar.navbar-default a {
-    color: #fff;
+    color: #000000;
+    font-size: small;
+}
+.navbar-expand-lg {
+    background-color: #F9F9F9;
+}
+ .nav-link{
+    font-weight: bold;
+}
+.heading-kloc{
+    font-family: varela;
 }
 .top-bar.navbar-default a:hover {
     background: none;
@@ -21,22 +31,34 @@
     display: inline-block;
     padding-right: 5px;
     padding-left: 5px;
+    margin-top: 10px;
+}
+.list-inline>li i{
+    font-size: 20px;
+
+}
+h3{
+    font-family: varela;
 }
 /* navbar */
 .navbar{
     padding: 10px 0px;
 }
-.navbar-light .navbar-nav .nav-link{
-    color: #000;
-    font-size: 15px;
+.navbar-nav .nav-link{
+    color: #2d2b75;
+    font-family: varela;
 }
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .active{
+.navbar-nav .nav-link:hover, .navbar-light .navbar-nav .active{
     color: #fff !important;
     background-color: #2d2b75;
     border-radius: 0.25rem;
 }
-.navbar-light .navbar-toggler{
+.navbar-toggler{
     border: none;
+}
+.header-style{
+    background-color: #2d2b75;
+    color: #ffff;
 }
 
 .card_shadow{
@@ -47,16 +69,17 @@
 }
 .card-body{
     box-shadow: 10px 10px 5px #2d2b75;
-    height: 10rem;
+    height: 13rem;
+    overflow-y: scroll;
 }
-.Campaign_Overview__Block .Campaign_Overview__Block__Number {
-    background: #008000;
+ .Campaign_Overview__Block__Number {
+    background: #AED25D;
     border-radius: 50%;
     text-align: center;
     height: 35px;
     width: 35px;
     padding-top: 6px;
-    color: #fff;
+    color: #2d2b75;
     font-size: 18px;
 }
 
@@ -77,8 +100,8 @@
 }
 .navbar-light .navbar-nav .nav-link{
     text-align: left;
-    color: #2f2c75;
-    }
+    color: #2d2b75;
+}
 
 }
 @media screen and (max-width: 550px) and (min-width: 300px){

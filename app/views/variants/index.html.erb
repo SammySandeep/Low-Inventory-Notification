@@ -1,21 +1,27 @@
 <%= stylesheet_link_tag "application", "button_style.css" ,:media => "all" %>
 <%= stylesheet_link_tag "application", "table_style.css" ,:media => "all" %> 
 <%= stylesheet_link_tag "application", "toast_notification_style.css" ,:media => "all" %> 
+<%= stylesheet_link_tag "application", "header_style.css" ,:media => "all" %> 
 <html>
   <body>
     <div class="container text-center" style="margin-bottom:20">
       <p id="notice"><%= notice %></p>
-      <div class="container text-center">
-        <h3><b>Products</b></h3>
-      </div>
       <div id="snackbar-error">
       </div>
       <div id="snackbar-success">
       </div>
-      <div>
-        <%= link_to "Export CSV", variants_export_csv_path, remote: true, :class => "btn export-csv-btn"%>
-        <%= link_to 'Import CSV', variants_import_csv_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn import-csv-btn'} %>
+      <div class="container header-style">
+        <div class="row">
+          <div class="col">
+            <h4><b>PRODUCTS</b></h4>
+          </div>
+          <div class="col">
+            <%= link_to "Download CSV", variants_export_csv_path, remote: true, :class => "btn export-csv-btn"%>
+            <%= link_to 'Upload CSV', variants_import_csv_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn import-csv-btn'} %>
+          </div>
+        </div>
       </div>
+      <br>
       <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content"></div>

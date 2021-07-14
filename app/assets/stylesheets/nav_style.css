@@ -12,9 +12,16 @@
 }
 .top-bar.navbar-default a {
     color: #000000;
+    font-size: small;
 }
 .navbar-expand-lg {
-    background-color: #AED25D;
+    background-color: #F9F9F9;
+}
+ .nav-link{
+    font-weight: bold;
+}
+.heading-kloc{
+    font-family: varela;
 }
 .top-bar.navbar-default a:hover {
     background: none;
@@ -31,7 +38,7 @@
 
 }
 h3{
-    float: left;
+    font-family: varela;
 }
 /* navbar */
 .navbar{
@@ -39,8 +46,7 @@ h3{
 }
 .navbar-nav .nav-link{
     color: #2d2b75;
-    font-family: cursive;
-    font-weight: bold;
+    font-family: varela;
 }
 .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .active{
     color: #fff !important;
@@ -49,6 +55,10 @@ h3{
 }
 .navbar-toggler{
     border: none;
+}
+.header-style{
+    background-color: #2d2b75;
+    color: #ffff;
 }
 
 .card_shadow{
@@ -60,8 +70,9 @@ h3{
 .card-body{
     box-shadow: 10px 10px 5px #2d2b75;
     height: 13rem;
+    overflow-y: scroll;
 }
-.Campaign_Overview__Block .Campaign_Overview__Block__Number {
+ .Campaign_Overview__Block__Number {
     background: #AED25D;
     border-radius: 50%;
     text-align: center;

@@ -4,3 +4,12 @@
     padding: 30px;
     border-radius: 10px;
 }
+.modal-header {
+    border-bottom: 3px solid #2b2d75;
+}
+.modal-footer {
+    border-top: 3px solid #2b2d75;
+}
+h4{
+    font-family: varela;
+}

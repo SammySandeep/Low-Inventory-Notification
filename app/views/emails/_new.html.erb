@@ -1,13 +1,14 @@
+<%= stylesheet_link_tag "application", "form_style.css" ,:media => "all" %> 
 <div class="modal-header">
-  <h4 class="modal-title" style="margin-left:75px;" id="myModalLabel">Add New Email</h4>
+  <h4 class="modal-title" id="myModalLabel">Add New Email</h4>
   <button type="button" class="close" data-dismiss="modal">x</button>
 </div>
 <form>
   <input type="hidden" id="hiddenfieldelem" data-shopsettingid=<%=@shop_setting_id%>>
   <div class="modal-body">
-  <label>Enter email Id:</label>
+    <label>Enter email Id:</label>
     <input type="email" class="form-control" id="emailtext" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required>
-  <label>Is Active:</label>
+    <label>Is Active:</label>
     <input type="checkbox" id="isactivechck" style='display:inline;margin-top:20px;margin-bottom:10px;border-color:#2D2B75;'/>
   </div>
   <div class="modal-footer">

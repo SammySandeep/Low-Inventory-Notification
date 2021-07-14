@@ -1,13 +1,8 @@
 thead{
-  background-color: #2D2B75;
-  color: white;
-}
+  font: varela;
+} 
 th{
   text-align: center;
-}
-.page-item.active .page-link {
-  background-color: #2D2B75;
-  border-color: #2D2B75 ;
 }
 div.dataTables_wrapper div.dataTables_length label {
   float: left;

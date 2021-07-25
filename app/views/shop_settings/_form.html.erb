@@ -17,12 +17,12 @@
 
     <div class="form-group">
       <label style="float:left";>Global Threshold:</label>
-      <%= form.number_field :global_threshold,:class => "form-control", data: {toggle: "tooltip"}, title: "Please enter positive integer value." %>
+      <%= form.number_field :global_threshold, class: "form-control", data: {toggle: "tooltip"}, title: "Please enter positive integer value." %>
     </div>
     <div class="form-group">
       <label style="float:left";>Alert Frequency:</label>
       <br>
-      <%= form.select :alert_frequency, [["1 min", 1],["6 hrs", 6],["12 hrs", 12],["24 hrs",24]] ,{},{:class => "form-control"} %>
+      <%= form.select :alert_frequency, [["1 min", 1],["6 hrs", 6],["12 hrs", 12],["24 hrs",24]] ,{},{class: "form-control"} %>
     </div>
     <br>
     <div class="form-actions">

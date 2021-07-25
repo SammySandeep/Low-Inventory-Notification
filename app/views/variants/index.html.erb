@@ -16,8 +16,8 @@
             <h4><b>PRODUCTS</b></h4>
           </div>
           <div class="col">
-            <%= link_to "Download CSV", variants_export_csv_path, remote: true, :class => "btn export-csv-btn"%>
-            <%= link_to 'Upload CSV', variants_import_csv_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn import-csv-btn'} %>
+            <%= link_to "Download CSV", variants_export_csv_path, remote: true, class: "btn export-csv-btn" %>
+            <%= link_to "Upload CSV", variants_import_csv_path, remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: "btn import-csv-btn" %>
           </div>
         </div>
       </div>

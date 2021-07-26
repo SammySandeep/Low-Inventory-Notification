@@ -7,23 +7,23 @@ job_type :rbenv_runner, %Q{export PATH=/opt/rbenv/shims:/opt/rbenv/bin:/usr/bin:
 
 # TEST
 every 1.minute do
-    rbenv_runner "ShopSetting.where(alert_frequency: 1).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
+    runner "ShopSetting.where(alert_frequency: 1).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
 end
 
 # LOW INVENTORY STOCK JOB
 every 6.hours do
-    rbenv_runner "ShopSetting.where(alert_frequency: 6).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
+    runner "ShopSetting.where(alert_frequency: 6).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
 end
 
 every 12.hours do
-    rbenv_runner "ShopSetting.where(alert_frequency: 12).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
+    runner "ShopSetting.where(alert_frequency: 12).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
 end
 
 every 24.hours do
-    rbenv_runner "ShopSetting.where(alert_frequency: 24).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
+    runner "ShopSetting.where(alert_frequency: 24).each { |shop_setting| LowInventoryStockJob.perform_later(shop_id: shop_setting.shop.id) }"
 end
 
 # REPORTS CLEANUP JOB
 every 1.day do
-    rbenv_runner "ReportsCleanupJob.perform_later"
+    runner "ReportsCleanupJob.perform_later"
 end

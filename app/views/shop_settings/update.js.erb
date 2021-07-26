@@ -5,13 +5,7 @@ var alertFrequencyTd = $(alertFrequency).closest('td');
 var table = document.getElementById('configuration-table');
 var editIconTdEle = table.rows[1].cells[2];
 
-<%if @email_params.present?%><%if @email_params.present?%>
-    var updateiconElem = $('[data-email_id*= '+<%=@email_id%>+']');
-    var prevTdElem = $(updateiconElem).closest('td'); 
-    var updatedIsActiveTd = $(prevTdElem).prev();
-    var hiddenField = $(updatedIsActiveTd).prev();
-    var updatedemailTd = $(hiddenField).prev();
-<%end%>
+<%if @email_params.present?%>
     var updateiconElem = $('[data-email_id*= '+<%=@email_id%>+']');
     var prevTdElem = $(updateiconElem).closest('td'); 
     var updatedIsActiveTd = $(prevTdElem).prev();

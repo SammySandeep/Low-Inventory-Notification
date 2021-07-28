@@ -18,6 +18,7 @@ function editclicked(editElement){
     if(alertFrequencytext == 6){
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
+            <option value=1 selected>1 hrs</option>
             <option value=6 selected>6 hrs</option>
             <option value=12>12 hrs</option>
             <option value=24>24 hrs</option>
@@ -27,6 +28,7 @@ function editclicked(editElement){
     else if(alertFrequencytext == 12){
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
+            <option value=1 selected>1 hrs</option>
             <option value=6>6 hrs</option>
             <option value=12 selected>12 hrs</option>
             <option value=24>24 hrs</option>
@@ -36,6 +38,7 @@ function editclicked(editElement){
     else if(alertFrequencytext == 24){
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
+            <option value=1 selected>1 hrs</option>
             <option value=6>6 hrs</option>
             <option value=12>12 hrs</option>
             <option value=24 selected>24 hrs</option>
@@ -45,6 +48,7 @@ function editclicked(editElement){
     else{
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
+            <option value=1 selected>1 hrs</option>
             <option value=6>6 hrs</option>
             <option value=12>12 hrs</option>
             <option value=24>24 hrs</option>

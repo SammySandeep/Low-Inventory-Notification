@@ -14,7 +14,8 @@ class ReportsController < ApplicationController
 
   def download
     @report = Report.find(params[:report_id])
-    redirect_to @report.file_url
+    data = HTTParty.get(@report.file_url)
+    send_data data.to_s, filename: @report.file_name, type: :csv, disposition: "attachment"
   end
 
   private

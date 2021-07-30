@@ -11,14 +11,18 @@ class ReportDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
     {  
       created_at: record.created_at,
-      download:'<i class="fa fa-download" onclick="downloadIconclicked(this);" aria-hidden="true"></i>'.html_safe,
+      download: download_icon(record.id).html_safe,
       DT_RowId: record.id
     }
     end
   end
-  
+
   def get_raw_records
     Report.where(shop_id: options[:shop].id)
+  end
+
+  def download_icon(record_id)
+    '<a class="fa fa-download" data-turbolinks="false" href="/reports/download?report_id=' + record_id.to_s + '"></a>'
   end
   
 end

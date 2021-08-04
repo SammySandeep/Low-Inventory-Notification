@@ -5,7 +5,7 @@ class ExportCsvMailer < ApplicationMailer
             mime_type: 'application/csv',
             content: csv_string
         }
-        mail(to: "#{email}", subject: 'CSV Export', body: 'CSV Export for edit and upload.')
+        mail(to: "#{email}", subject: 'CSV File', body: 'CSV Export for edit threshold and upload.')
     end
 
 end

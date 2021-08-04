@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  def download
+  def download 
     @report = Report.find(params[:report_id])
     redirect_to @report.file_url
   end

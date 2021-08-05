@@ -13,32 +13,34 @@ function editclicked(editElement){
 
     var secondCol = configurationTable.rows[1].cells[1];
     var alertFrequencytext = $(secondCol).text();
+    var alertFrequencytextsplit = alertFrequencytext.split(" ");
+    var alertFrequencytextsplitValue = alertFrequencytextsplit[0];
     var shopId = $(secondCol).attr('id');
 
-    if(alertFrequencytext == 6){
+    if(alertFrequencytextsplitValue == 6){
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
-            <option value=1 selected>1 min</option>
+            <option value=1>1 min</option>
             <option value=6 selected>6 hrs</option>
             <option value=12>12 hrs</option>
             <option value=24>24 hrs</option>
             </select></td>`;
         });
     }
-    else if(alertFrequencytext == 12){
+    else if(alertFrequencytextsplitValue == 12){
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
-            <option value=1 selected>1 min</option>
+            <option value=1>1 min</option>
             <option value=6>6 hrs</option>
             <option value=12 selected>12 hrs</option>
             <option value=24>24 hrs</option>
             </select></td>`;
         });
     }
-    else if(alertFrequencytext == 24){
+    else if(alertFrequencytextsplitValue == 24){
         $(secondCol).replaceWith(function () {
             return `<td><select class="form-control" id=${shopId} selected=${parseInt(alertFrequencytext)} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'>
-            <option value=1 selected>1 min</option>
+            <option value=1>1 min</option>
             <option value=6>6 hrs</option>
             <option value=12>12 hrs</option>
             <option value=24 selected>24 hrs</option>
@@ -57,11 +59,11 @@ function editclicked(editElement){
     }
     $(editElement).replaceWith(function(){
         return `<i class="fa fa-check" aria-hidden="true" style='margin-top:15px;' onclick=updateIconPressedShopSetting(${shopSettingId},${shopId});></i>
-        <i class="fa fa-times" style='font-size:20px;color:#212529;' onclick=deleteiconclicked(${globalThresholdTDtext},${alertFrequencytext});></i>`;
+        <i class="fa fa-times" style='font-size:20px;color:#212529;' onclick=deleteiconclicked(${globalThresholdTDtext},${alertFrequencytextsplitValue});></i>`;
     });
 }
 
-function deleteiconclicked(globalThresholdTDtext,alertFrequencytext){
+function deleteiconclicked(globalThresholdTDtext,alertFrequencytextsplitValue){
     var configurationTable = document.getElementById('configuration-table');
     var firstCol = configurationTable.rows[1].cells[0];
     var secondCol = configurationTable.rows[1].cells[1];
@@ -70,7 +72,7 @@ function deleteiconclicked(globalThresholdTDtext,alertFrequencytext){
         return `<td>${globalThresholdTDtext}</td>`;
     });  
     $(secondCol).replaceWith(function () {
-        return `<td>${alertFrequencytext}</td>`;
+        return `<td>${alertFrequencytextsplitValue} hrs</td>`;
     }); 
     $(thirdCol).replaceWith(function () {
         return ` <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></tr>`;

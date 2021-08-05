@@ -24,9 +24,15 @@ var editIconTdEle = table.rows[1].cells[2];
         return `<td id=<%=@shop_setting.id%>><%= @global_threshold %></td>`;
     });
 
-    $(alertFrequencyTd).replaceWith(function () {
-        return ` <td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
-    });
+    <% if @shop_setting.alert_frequency == 1%>
+        $(alertFrequencyTd).replaceWith(function () {
+            return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %> min</td>`;
+        });
+    <% else %>
+        $(alertFrequencyTd).replaceWith(function () {
+            return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %> hrs</td>`;
+        });
+    <% end %> 
     
     $(editIconTdEle).replaceWith(function () {
         return `<td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>`;
@@ -65,9 +71,15 @@ var editIconTdEle = table.rows[1].cells[2];
         return `<td id=<%=@shop_setting.id%>><%= @shop_setting.global_threshold %></td>`;
     });
 
-    $(alertFrequencyTd).replaceWith(function () {
-        return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %></td>`;
-    });
+    <% if @shop_setting.alert_frequency == 1%>
+        $(alertFrequencyTd).replaceWith(function () {
+            return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %> min</td>`;
+        });
+    <% else %>
+        $(alertFrequencyTd).replaceWith(function () {
+            return `<td id=<%=(@shop_setting.shop_id)+5%>><%= @shop_setting.alert_frequency %> hrs</td>`;
+        });
+    <% end %> 
     
     $(editIconTdEle).replaceWith(function () {
         return ` <td><i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:20px;" onclick="editclicked(this);"></i></td>`;

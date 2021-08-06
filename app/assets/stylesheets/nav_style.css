@@ -20,6 +20,9 @@
  .nav-link{
     font-weight: bold;
 }
+.kloc-help-desk{
+    margin-left: 80px;
+}
 .heading-kloc{
     font-family: varela;
 }
@@ -91,6 +94,10 @@ h3{
     .form-group label{
         font-size: 14px;
     }
+    .kloc-help-desk{
+        margin-left: 0px;
+    }
+    
 }
 
 @media screen and (max-width: 480px) and (min-width: 300px){
@@ -102,12 +109,17 @@ h3{
     text-align: left;
     color: #2d2b75;
 }
-
+.kloc-help-desk{
+    margin-left: 0px;
+}
 }
 @media screen and (max-width: 550px) and (min-width: 300px){
     li.paginate_button.page-item a.page-link {
         font-size: 12px;
         padding: 7px 7px;
+    }
+    .kloc-help-desk{
+        margin-left: 0px;
     }
 
 }

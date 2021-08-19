@@ -6,7 +6,8 @@ class Product < ApplicationRecord
 
     validates :title, presence: true
     validates :shopify_product_id, presence: true, uniqueness: true
-
+    validates :status, presence: true
+    
     def self.write_products_from_shopify_products_json shop_id:, shopify_products_json:
         ActiveRecord::Base.connection.execute(
             <<-SQL

@@ -13,6 +13,7 @@ class ProductsCreateWebhookJob < ApplicationJob
     def create_product
         Product.create!(
             title: @shopify_product_params['title'],
+            status: @shopify_product_params['status'],
             shopify_product_id: @shopify_product_params['id'],
             shop_id: @shop_id
         )
@@ -30,6 +31,7 @@ class ProductsCreateWebhookJob < ApplicationJob
           shopify_variant_id: shopify_variant_params['id'],
           product_id: product_id,
           quantity: shopify_variant_params['inventory_quantity'],
+          inventory_management: shopify_variant_params['inventory_management'],
           local_threshold: nil,
           shop_id: @shop_id
         )

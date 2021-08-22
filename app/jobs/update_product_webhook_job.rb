@@ -4,8 +4,9 @@ class UpdateProductWebhookJob < ApplicationJob
     def perform(shopify_product_params)
         @shopify_product_params = shopify_product_params
         @product = Product.find_by(shopify_product_id: @shopify_product_params['id'])
-        if !(@product.title == @shopify_product_params['title'])
+        if !(@product.title == @shopify_product_params['title']) || !(@product.status == @shopify_product_params['status'])
             @product.title = @shopify_product_params['title']
+            @product.status = @shopify_product_params['status']
             @product.save!
         end
         shopify_variant_ids = @product.variants.pluck(:shopify_variant_id)
@@ -16,6 +17,7 @@ class UpdateProductWebhookJob < ApplicationJob
             else
                 @variant.sku = shopify_variant_params['sku']
                 @variant.quantity = shopify_variant_params['inventory_quantity']
+                @variant.inventory_management = shopify_variant_params['inventory_management']
                 @variant.save!
             end  
             shopify_variant_ids.delete(shopify_variant_params['id'])
@@ -31,6 +33,7 @@ class UpdateProductWebhookJob < ApplicationJob
           shopify_variant_id: shopify_variant_params['id'],
           product_id: product_id,
           quantity: shopify_variant_params['inventory_quantity'],
+          inventory_management: shopify_variant_params['inventory_management']
           local_threshold: nil,
           shop_id: shop_id
         )

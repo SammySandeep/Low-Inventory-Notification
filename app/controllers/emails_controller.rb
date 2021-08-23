@@ -28,7 +28,7 @@ class EmailsController < ApplicationController
         if @email.shop_setting_id == (params[:emails_attributes][:shop_setting_id]).to_i
             respond_to do |format|
                 format.html
-                format.js { render "update.js.erb", :locals => {:email_delete_success_message => email_delete_success_message, :email_delete_error_message => email_delete_error_message} }
+                format.js { render "destroy.js.erb", :locals => {:email_delete_success_message => email_delete_success_message, :email_delete_error_message => email_delete_error_message} }
             end
         end
     end

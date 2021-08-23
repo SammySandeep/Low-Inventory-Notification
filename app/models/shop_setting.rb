@@ -1,6 +1,6 @@
 class ShopSetting < ApplicationRecord
     
-    belongs_to :shop, dependent: :destroy
+    belongs_to :shop
     
     has_many :emails
     accepts_nested_attributes_for :emails, allow_destroy: true, reject_if: proc { |att| att['email'].blank? }

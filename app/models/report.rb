@@ -1,6 +1,6 @@
 class Report < ApplicationRecord
     
-    belongs_to :shop, dependent: :destroy
+    belongs_to :shop
 
     validates :file_name, presence: true
 

@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-    belongs_to :shop, dependent: :destroy
+    belongs_to :shop
     
     has_many :variants
 

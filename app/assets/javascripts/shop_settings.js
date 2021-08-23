@@ -106,21 +106,21 @@ function editclick(editiconElem){
     var emailElemText = $(emailTdElem).text();
 
     $(emailTdElem).replaceWith(function () {
-        return `<td><input type="email" class="form-control" value=${emailElemText} style='display:inline;margin-top:10px;margin-bottom:10px;border-color:#2D2B75;'/></td>`;
+        return `<td><input type="email" class="form-control" value=${emailElemText} style='display:inline;border-color:#2D2B75;'/></td>`;
     }); 
     if(isactiveValue == "true"){
         $(isactiveTDElem).replaceWith(function () {
-            return `<td><input type="checkbox" value=${isactiveValue} style='display:inline;margin-top:20px;margin-bottom:10px;border-color:#2D2B75;' checked/></td>`;
+            return `<td><input type="checkbox" value=${isactiveValue} style='display:inline;border-color:#2D2B75;' checked/></td>`;
         }); 
     }
     else{
         $(isactiveTDElem).replaceWith(function () {
-            return `<td><input type="checkbox" value=${isactiveValue} style='display:inline;margin-top:20px;margin-bottom:10px;border-color:#2D2B75;'/></td>`;
+            return `<td><input type="checkbox" value=${isactiveValue} style='display:inline;border-color:#2D2B75;'/></td>`;
         }); 
     }
 
     $(editiconElem).replaceWith(function(){
-        return `<i class="fa fa-check" aria-hidden="true"; data-email_id=${emailId} style="margin-top:15px;"  onclick=updateIconPressedEmail(${shopSettingIDEmail},${emailId});></i>
+        return `<i class="fa fa-check" aria-hidden="true"; data-email_id=${emailId} style="font-size:20px;"  onclick=updateIconPressedEmail(${shopSettingIDEmail},${emailId});></i>
         <i class="fa fa-times" style='font-size:20px;color:#212529;' onclick=crossiconclicked(${emailId},${isactiveValue});></i>`;
     });
     }

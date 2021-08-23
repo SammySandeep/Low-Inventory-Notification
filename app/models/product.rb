@@ -13,9 +13,10 @@ class Product < ApplicationRecord
             <<-SQL
                 BEGIN TRANSACTION;
                 
-                INSERT INTO products (title, shopify_product_id, shop_id, created_at, updated_at)
+                INSERT INTO products (title, status, shopify_product_id, shop_id, created_at, updated_at)
                 SELECT
                     products_json ->> 'title' AS title,
+                    products_json ->> 'status' AS status,
                     (products_json ->> 'id')::BIGINT AS shopify_product_id,
                     #{shop_id} AS shop_id,
                     timezone('utc', now()) AS created_at,

@@ -6,7 +6,7 @@ class Variant < ApplicationRecord
     validates :quantity, numericality: { only_integer: true }, presence: true
     validates :shopify_variant_id, presence: true, uniqueness: true
     validates :local_threshold, numericality: { only_integer: true, greater_than_or_equal_to: 0}, presence: true, allow_nil: true
-    validates :inventory_management, allow_nil: true
+    validates :inventory_management, presence: true, allow_nil: true
     
     def threshold
         ActiveRecord::Base.connection.exec_query(
@@ -19,11 +19,11 @@ class Variant < ApplicationRecord
             <<-SQL
                 BEGIN TRANSACTION;
                 
-                INSERT INTO variants (shop_id, product_id, shopify_variant_id, sku, quantity, created_at, updated_at)
+                INSERT INTO variants (shop_id, product_id, shopify_variant_id, sku, quantity, inventory_management, created_at, updated_at)
                 SELECT 
                     #{shop_id} AS shop_id, 
                     (SELECT id FROM products WHERE products.shopify_product_id = variants_json.shopify_product_id LIMIT 1) AS product_id, 
-                    shopify_variant_id, sku, quantity, created_at, updated_at 
+                    shopify_variant_id, sku, quantity, inventory_management, created_at, updated_at 
                 FROM
                 (
                     SELECT
@@ -31,6 +31,7 @@ class Variant < ApplicationRecord
                         (json_array_elements(products_json -> 'variants') ->> 'product_id')::BIGINT AS shopify_product_id,
                         json_array_elements(products_json -> 'variants') ->> 'sku' AS sku,
                         (json_array_elements(products_json -> 'variants') ->> 'inventory_quantity')::INTEGER AS quantity,
+                        json_array_elements(products_json -> 'variants') ->> 'inventory_management' AS inventory_management,
                         timezone('utc', now()) AS created_at,
                         timezone('utc', now()) AS updated_at
                     FROM json_array_elements(

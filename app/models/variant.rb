@@ -61,7 +61,9 @@ class Variant < ApplicationRecord
                 INNER JOIN products ON variants.product_id = products.id 
                 INNER JOIN shops ON products.shop_id = shops.id
                 INNER JOIN shop_settings ON shop_settings.shop_id = shops.id
-                WHERE products.shop_id = #{shop_id};
+                WHERE products.shop_id = #{shop_id}
+                AND products.status = 'active'
+                AND variants.inventory_management IS NOT NULL;
             SQL
         )
     end

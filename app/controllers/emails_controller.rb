@@ -17,7 +17,7 @@ class EmailsController < ApplicationController
         if @email.save
             respond_to do |format|
                 format.html
-                format.js { render "update.js.erb", :locals => {:email_create_success_message => email_create_success_message, :email_create_error_message => email_create_error_message} }
+                format.js { render "create.js.erb", :locals => {:email_create_success_message => email_create_success_message, :email_create_error_message => email_create_error_message} }
             end
         end
     end

@@ -24,7 +24,7 @@ class VariantDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Variant.joins(:product).where(shop_id: options[:shop].id)
+    Variant.joins(:product).where(shop_id: options[:shop].id).where.not(inventory_management: nil)
   end
 
 end

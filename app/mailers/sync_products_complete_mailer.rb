@@ -7,7 +7,6 @@ class SyncProductsCompleteMailer < ApplicationMailer
         attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
         attachments.inline["insta.png"] = File.read("#{Rails.root}/app/assets/images/insta.png")
         attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
-        attachments.inline["download.png"] = File.read("#{Rails.root}/app/assets/images/download.png")
         mail to: "#{email}", subject: "Sync complete for #{domain}"
     end
 

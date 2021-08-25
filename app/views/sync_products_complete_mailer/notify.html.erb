@@ -30,6 +30,24 @@
             color: inherit !important;
             text-decoration: none !important;
         }
+        @media screen and (max-width: 800px) and (min-width: 480px){
+            .kloc-grid{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        @media screen and (max-width: 480px) and (min-width: 300px){
+            .kloc-grid{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        @media screen and (max-width: 550px) and (min-width: 300px){
+            .kloc-grid{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
     </style>
     <style id="media-query" type="text/css">
         @media (max-width: 660px) {
@@ -201,7 +219,7 @@
                 <td style="word-break: break-word; vertical-align: top;" valign="top">
                     <div style="background-color:transparent;">
                         <div class="block-grid"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto;">
                             <div style="border-collapse: collapse;display: table;width: 100%;">
                                 <div class="col num12"
                                     style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;">
@@ -236,7 +254,7 @@
                                             </table>
                                             <div align="center" class="img-container center fixedwidth"
                                                 style="padding-right: 0px;padding-left: 0px;">
-                                                <%= image_tag(attachments["logo1.png"].url,border: "0", align: "center", alt: "logo", border: "0",width: "126px",style: "text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 126spx;max-width: 100%; display: block;")%>
+                                                <%= image_tag(attachments["logo1.png"].url, align: "center", alt: "logo",width: "126px",style: "text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; width: 126px;max-width: 100%; display: block;")%>
 
                                             </div>
                                             <table border="0" cellpadding="0" cellspacing="0" class="divider"
@@ -273,7 +291,7 @@
                     </div>
                     <div style="background-color:transparent;">
                         <div class="block-grid"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                             <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
                                 <div class="col num12"
                                     style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;">
@@ -281,19 +299,15 @@
                                         <div
                                             style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:20px; padding-bottom:10px; padding-right: 0px; padding-left: 0px;">
                                             <div
-                                                style="color:#2d2b75;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+                                                style="color:#2d2b75;font-family:'Lato';line-height:1.2;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
                                                 <div class="txtTinyMce-wrapper"
-                                                    style="line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; font-size: 12px; color: #2d2b75; mso-line-height-alt: 14px;">
+                                                    style="line-height: 1.2; font-family: 'Lato'; font-size: 12px; color: #2d2b75; mso-line-height-alt: 14px;">
                                                     <p
-                                                        style="margin: 0; font-size: 24px; font-family: Lato; text-align: center; line-height: 1.2; text-align: center; mso-line-height-alt: 26px; margin-top: 0; margin-bottom: 0;">
-                                                        <span style="font-size: 18px; caret-color: #152a6d;"><strong>LOW
+                                                        style="margin: 0; font-size: 24px; font-family: 'Lato'; text-align: center; line-height: 1.2; text-align: center; mso-line-height-alt: 26px; margin-top: 0; margin-bottom: 0;">
+                                                        <span style="font-size: 16px; caret-color: #152a6d;"><strong>LOW
                                                                 INVENTORY NOTIFICATION APP (LINA) MADE
                                                                 SIMPLE</strong></span></p>
                                                 </div>
-                                            </div>
-                                            <div align="center" class="img-container center"
-                                                style="padding-right: 15px;padding-left: 15px;">
-                                                <%= image_tag(attachments["download.png"].url, align: "center", alt: "download symbol", border: "0",style: "text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0;width: 400px;margin-top: 20px; display: block;")%>
                                             </div>
                                         </div>
 
@@ -302,9 +316,9 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color:transparent;">
+                    <div class ="kloc-grid" style="background-color:transparent;">
                         <div class="block-grid"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                             <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
                                 <div class="col num12"
                                     style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;">
@@ -335,7 +349,7 @@
                                                 style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"
                                                 valign="top" width="100%">
                                             </table>
-                                            <hr style="height: 1px;background-color: #AED25D;">
+                                            <br>
                                             <div
                                                 style="color:#2b2d49;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:30px;padding-bottom:0px;padding-left:30px;">
                                                 <div class="txtTinyMce-wrapper"
@@ -345,14 +359,14 @@
                                                         <span style="font-size: 18px; color: #2c2e74; font-family: 'Lato' ">PRODUCTS AND VARIANTS ARE NOW SYNCED TO THE APP.</span></p>
                                                 </div>
                                             </div>
-                                            <hr style="height: 1px;background-color: #AED25D;">
+                                            
                                             <br />
                                             <div
                                                 style="color:#2c2e74;font-family:'Lato';line-height:1.2;padding-top:0px;padding-right:30px;padding-bottom:0px;padding-left:30px;">
                                                 <div class="txtTinyMce-wrapper"
                                                     style="line-height: 1.2; font-size: 24px; font-family: 'Lato'; color: #2c2e74; mso-line-height-alt: 14px;">
                                                     <p style="margin: 0; font-size: 24px; color: #2c2e74;font-family: 'Lato'; line-height: 1.2; text-align: center; mso-line-height-alt: 19px; margin-top: 0; margin-bottom: 0;">
-                                                        <span style="font-size: 18px; color: #2c2e74; font-family: 'Lato'; font-weight: 300;">You can now go ahead and view these in "Products" panel.<br/><br/>Make sure you have filled all the details in configuration panel. Only then the app will work. The app will not work without this.
+                                                        <span style="font-size: 15px; color: #2c2e74; font-family: 'Lato'; font-weight: 300;">You can now go ahead and view these in "Products" panel.<br/><br/>Make sure you have filled all the details in configuration panel. Only then the app will work. The app will not work without this.
                                                         </span>
                                                     </p>
                                                 </div>
@@ -409,9 +423,9 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color:transparent;">
+                    <div class ="kloc-grid" style="background-color:transparent;">
                         <div class="block-grid two-up"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                             <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
                                 <div class="col num6"
                                     style="display: table-cell; vertical-align: top; max-width: 320px; min-width: 318px; width: 320px;">
@@ -513,9 +527,9 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color:transparent;">
+                    <div class ="kloc-grid" style="background-color:transparent;">
                         <div class="block-grid two-up"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                             <div
                                 style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;;direction:rtl">
                                 <div class="col num6"
@@ -543,10 +557,10 @@
                                                                             style="text-align: center; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"
                                                                             valign="top">
                                                                             <span
-                                                                                style="font-size: 18px;color: #2c2e74;font-weight: 300;font-family: 'Lato'">If
+                                                                                style="font-size: 10px;color: #2c2e74;font-weight: 300;font-family: 'Lato'">If
                                                                                 you have any questions or concerns,
                                                                                 please open a ticket using our KLoc
-                                                                                HelpDesk or drop an email to <a style="font-weight: 500;color: #2c2e74;font-size: 18px;" herf="mailto:lina-made-simple@kloctechnologies.com">lina-made-simple@kloctechnologies.com.</a>
+                                                                                HelpDesk <br>or drop an email to <a style="font-weight: 700;color: #2c2e74;font-size: 10px;" herf="mailto:lina-made-simple@kloctechnologies.com">lina-made-simple@kloctechnologies.com.</a>
                                                                                 </span>
                                                                         </td>
                                                                     </tr>
@@ -627,9 +641,9 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color:transparent;">
+                    <div class ="kloc-grid" style="background-color:transparent;">
                         <div class="block-grid"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
                             <div
                                 style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
                                 <div class="col num12"
@@ -673,7 +687,7 @@
                     <br />
                     <div style="background-color:#eeee;">
                         <div class="block-grid"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #eeee;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #eeee;">
                             <div style="border-collapse: collapse;display: table;width: 100%;background-color:#eeee;">
                                 <div class="col num12"
                                     style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;">
@@ -698,18 +712,18 @@
                                                                         valign="top">
                                                                         <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;">
                                                                             <a href="https://twitter.com/klocsutra/"
-                                                                                target="_blank"><%= image_tag(attachments["twitter.png"].url, width: "32", height: "32",align: "center",height: "32", alt: "insta-logo", class: "center fixedwidth",border: "0")%>
+                                                                                target="_blank"><%= image_tag(attachments["twitter.png"].url, width: "32",align: "center",height: "32", alt: "insta-logo", class: "center fixedwidth",border: "0")%>
                                                                             </a>
                                                                         </td>
                                                                         <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
                                                                             valign="top"><a
                                                                                 href="https://www.instagram.com/klocsutra/"
-                                                                                target="_blank"><%= image_tag(attachments["insta.png"].url, width: "32", height: "32",align: "center",height: "32", alt: "insta-logo", class: "center fixedwidth",border: "0")%></a>
+                                                                                target="_blank"><%= image_tag(attachments["insta.png"].url, width: "32",align: "center",height: "32", alt: "insta-logo", class: "center fixedwidth",border: "0")%></a>
                                                                         </td>
                                                                         <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
                                                                             valign="top"><a
                                                                                 href="https://www.linkedin.com/company/kloc-technologies/"
-                                                                                target="_blank"><%= image_tag(attachments["linkedin.png"].url, width: "32", height: "32",align: "center",height: "32", alt: "linkedin-logo", class: "center fixedwidth",border: "0")%></a>
+                                                                                target="_blank"><%= image_tag(attachments["linkedin.png"].url, width: "32",align: "center",height: "32", alt: "linkedin-logo", class: "center fixedwidth",border: "0")%></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -726,7 +740,7 @@
                     </div>
                     <div style="background-color:#eeee;">
                         <div class="block-grid"
-                            style="min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #eeee;">
+                            style="min-width: 320px; max-width: 800px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #eeee;">
                             <div style="border-collapse: collapse;display: table;width: 100%;background-color:#eeee;">
                                 <div class="col num12"
                                     style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;">
@@ -736,7 +750,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="background-color:transparent;">
+                    <div class ="kloc-grid" style="background-color:transparent;">
                     </div>
                 </td>
             </tr>
@@ -749,7 +763,7 @@
 
                     <tr>
                         <td class="text-footer1 pb10"
-                            style="color: #2b2d75; font-family:'Muli', Arial,sans-serif; font-size:16px;background-color: #eeee; line-height:20px; text-align:center; padding-bottom:10px;">
+                            style="color: #2b2d75; font-family:'Muli', Arial,sans-serif; font-size:15px;background-color: #eeee; line-height:20px; text-align:center; padding-bottom:10px;">
                             KLOC TECHNOLOGIES PVT LTD</td>
                     </tr>
                     <tr>

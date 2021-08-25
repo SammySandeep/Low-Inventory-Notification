@@ -133,7 +133,9 @@ class Variant < ApplicationRecord
                     FROM variants
                     INNER JOIN products ON variants.product_id = products.id
                     INNER JOIN shop_settings ON shop_settings.shop_id = #{shop_id}
-                    WHERE variants.shop_id = #{shop_id} AND shopify_variant_id IS NOT NULL
+                    WHERE variants.shop_id = #{shop_id} 
+                    AND variants.inventory_management IS NOT NULL
+                    AND products.status = 'active'
                     ) AS low_inventory_stocks
                 WHERE shopify_variant_id IS NOT NULL;
             SQL
